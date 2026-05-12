@@ -3,7 +3,11 @@
 import { content } from "@/data/content";
 import Image from "next/image";
 
-export default function Hero() {
+interface HeroProps {
+  onQuizOpen?: () => void;
+}
+
+export default function Hero({ onQuizOpen }: HeroProps) {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[var(--bg-main)] text-[var(--text-main)]">
       {/* BACKGROUND */}

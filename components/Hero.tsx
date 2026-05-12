@@ -94,9 +94,9 @@ export default function Hero({ onQuizOpen }: HeroProps) {
             className="relative opacity-0-init animate-fade-up"
             style={{ animationDelay: "200ms" }}
           >
-            <div className="relative h-[75vh] md:h-[88vh]  rounded-2xl overflow-hidden bg-warm">
+            <div className="relative h-[520px] md:h-[620px] rounded-2xl overflow-hidden bg-warm">
               {/* Placeholder when no image */}
-              <div className="absolute inset-0 bg-black/20 z-10" />
+             <div className="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-black/40 to-transparent">
                 <div className="text-white">
                   <p className="text-sm opacity-70 mb-1">Реализованный проект</p>
                   <p className="text-xl font-semibold">Квартира 82 м²</p>

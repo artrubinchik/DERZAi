@@ -2,34 +2,38 @@ import { content } from "@/data/content";
 
 export default function Benefits() {
   return (
-    <section className="py-20 md:py-32 bg-off-white border-t border-line">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
-        {/* Label */}
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-8 h-px bg-black" />
-          <span className="text-xs font-medium tracking-widest uppercase text-gray">
-            Почему выбирают нас
-          </span>
+    <section className="section-dark py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+        <div className="mb-20">
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-px w-12 bg-[var(--text-main)]/50" />
+            <span className="text-xs uppercase tracking-[0.42em] text-muted">
+              Подход
+            </span>
+          </div>
+
+          <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.06em] md:text-7xl">
+            Минимализм
+            <br />
+            без компромиссов
+          </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid gap-px border border-[var(--line)] md:grid-cols-2">
           {content.benefits.map((item, i) => (
             <div
               key={i}
-              className="group p-6 md:p-8 border border-line rounded-xl hover:border-black/20 hover:shadow-sm transition-all duration-300 bg-off-white"
+              className="premium-card border-0 p-10"
             >
-              {/* Icon */}
-              <div className="text-2xl mb-5 text-warm group-hover:text-black transition-colors duration-300">
+              <div className="mb-8 text-3xl font-light text-[var(--text-main)]/55">
                 {item.icon}
               </div>
 
-              {/* Title */}
-              <h3 className="text-base font-semibold text-black mb-2 leading-snug">
+              <h3 className="text-2xl font-light tracking-[-0.03em]">
                 {item.title}
               </h3>
 
-              {/* Desc */}
-              <p className="text-sm text-gray leading-relaxed">
+              <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-muted">
                 {item.desc}
               </p>
             </div>

@@ -2,80 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================================================
-   RUBIK ART — GLOBAL PREMIUM STYLE
-========================================================= */
-
 :root {
-  /* DARK SEPIA THEME */
-  --bg-main: #15110d;
-  --bg-soft: #1d1712;
-  --bg-card: #221b15;
+  --bg-main: #070707;
+  --bg-soft: #0f0f0f;
+  --bg-card: rgba(255, 255, 255, 0.035);
 
-  --text-main: #f4efe8;
-  --text-muted: rgba(244, 239, 232, 0.58);
+  --text-main: #f4f4f1;
+  --text-muted: rgba(244, 244, 241, 0.56);
 
-  --line: rgba(244, 239, 232, 0.12);
+  --line: rgba(244, 244, 241, 0.12);
 
   --button-bg: transparent;
-  --button-text: #f4efe8;
-  --button-border: rgba(244, 239, 232, 0.32);
+  --button-text: #f4f4f1;
+  --button-border: rgba(244, 244, 241, 0.28);
 
-  --overlay-dark: rgba(0, 0, 0, 0.42);
-
-  --hero-opacity: 0.28;
-
+  --hero-opacity: 0.26;
   --transition: 0.35s ease;
 }
 
-/* LIGHT THEME */
-
 .light-theme {
-  --bg-main: #f5f1eb;
-  --bg-soft: #ebe5dc;
-  --bg-card: #ffffff;
+  --bg-main: #f6f5f2;
+  --bg-soft: #ebe9e4;
+  --bg-card: rgba(0, 0, 0, 0.035);
 
-  --text-main: #111111;
-  --text-muted: rgba(17, 17, 17, 0.58);
+  --text-main: #0b0b0b;
+  --text-muted: rgba(11, 11, 11, 0.56);
 
-  --line: rgba(17, 17, 17, 0.1);
+  --line: rgba(11, 11, 11, 0.12);
 
   --button-bg: transparent;
-  --button-text: #111111;
-  --button-border: rgba(17, 17, 17, 0.18);
+  --button-text: #0b0b0b;
+  --button-border: rgba(11, 11, 11, 0.22);
 
-  --overlay-dark: rgba(0, 0, 0, 0.08);
-
-  --hero-opacity: 0.16;
+  --hero-opacity: 0.14;
 }
-
-/* ========================================================= */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  overflow-x: hidden;
   background: var(--bg-main);
   color: var(--text-main);
-  transition:
-    background var(--transition),
-    color var(--transition);
-  overflow-x: hidden;
-
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
-
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background var(--transition), color var(--transition);
 }
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
 
 h1,
 h2,
@@ -83,9 +58,10 @@ h3,
 h4,
 h5,
 h6 {
-  letter-spacing: -0.04em;
-  line-height: 0.98;
+  color: var(--text-main);
   font-weight: 300;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
 }
 
 p {
@@ -93,43 +69,23 @@ p {
 }
 
 a {
-  transition: opacity var(--transition);
+  color: inherit;
+  text-decoration: none;
 }
-
-a:hover {
-  opacity: 1;
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
 
 .btn-minimal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 11px 20px;
-
+  padding: 9px 16px;
   border: 1px solid var(--button-border);
-
   background: var(--button-bg);
-
   color: var(--button-text);
-
   font-size: 10px;
   font-weight: 500;
-
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-
-  transition:
-    background var(--transition),
-    color var(--transition),
-    border-color var(--transition),
-    transform var(--transition);
-
-  backdrop-filter: blur(10px);
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
 }
 
 .btn-minimal:hover {
@@ -137,83 +93,36 @@ a:hover {
   transform: translateY(-1px);
 }
 
-/* =========================================================
-   CARDS
-========================================================= */
-
 .premium-card {
   background: var(--bg-card);
   border: 1px solid var(--line);
-
-  transition:
-    transform var(--transition),
-    border-color var(--transition),
-    background var(--transition);
+  backdrop-filter: blur(10px);
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
 }
 
 .premium-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.24);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
 }
 
-/* =========================================================
-   HERO OVERLAY
-========================================================= */
+.light-theme .premium-card:hover {
+  border-color: rgba(0, 0, 0, 0.22);
+}
 
 .hero-overlay {
   background:
-    linear-gradient(
-      to right,
-      rgba(0,0,0,0.72),
-      rgba(0,0,0,0.34),
-      rgba(0,0,0,0.62)
-    );
+    linear-gradient(to right, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.72)),
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08), transparent 42%);
 }
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-main);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.14);
-}
-
-.light-theme ::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.14);
-}
-
-/* =========================================================
-   SELECTION
-========================================================= */
-
-::selection {
-  background: rgba(255,255,255,0.14);
-  color: white;
-}
-
-.light-theme ::selection {
-  background: rgba(0,0,0,0.14);
-  color: black;
-}
-
-/* =========================================================
-   UTILITIES
-========================================================= */
 
 .section-dark {
   background: var(--bg-main);
+  color: var(--text-main);
 }
 
 .section-soft {
   background: var(--bg-soft);
+  color: var(--text-main);
 }
 
 .text-main {
@@ -228,10 +137,12 @@ a:hover {
   border-color: var(--line);
 }
 
-.fade-hover {
-  transition: opacity var(--transition);
+::selection {
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
 }
 
-.fade-hover:hover {
-  opacity: 0.72;
+.light-theme ::selection {
+  background: rgba(0, 0, 0, 0.12);
+  color: black;
 }

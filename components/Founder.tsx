@@ -7,7 +7,7 @@ export default function Founder() {
     <section className="py-20 md:py-32 bg-warm/30 border-y border-line">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-           Photo 
+           {/* Photo */} 
           <div className="relative">
             <div className="aspect-[3/4] max-w-sm mx-auto md:mx-0 rounded-2xl overflow-hidden bg-warm">
               {/* Placeholder */}

@@ -8,56 +8,37 @@ interface HeaderProps {
   onQuizOpen: () => void;
 }
 
-function RubikLogo({ inverted = false }: { inverted?: boolean }) {
-  const fill = inverted ? "bg-[#111111]" : "bg-white";
-  const border = inverted ? "border-b-[#111111]" : "border-b-white";
-
+function RubikLogo() {
   return (
     <div className="relative h-[46px] w-[46px] shrink-0">
-      <div className={`absolute left-0 top-0 h-[22px] w-[36px] rounded-r-full ${fill}`} />
-      <div className={`absolute bottom-0 left-0 h-[19px] w-[16px] ${fill}`} />
-      <div
-        className={`absolute bottom-0 right-[6px] h-0 w-0 border-b-[19px] border-r-[19px] ${border} border-r-transparent`}
-      />
+      <div className="absolute left-0 top-0 h-[22px] w-[36px] rounded-r-full bg-current" />
+      <div className="absolute bottom-0 left-0 h-[19px] w-[16px] bg-current" />
+      <div className="absolute bottom-0 right-[6px] h-0 w-0 border-b-[19px] border-r-[19px] border-b-current border-r-transparent" />
     </div>
   );
 }
 
 export default function Header({ onQuizOpen }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    document.documentElement.classList.toggle("light-theme", isLight);
+  }, [isLight]);
 
-  const isWhite = scrolled || menuOpen;
   const navItems = content.nav.filter((item) => !item.isDzen);
 
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
-        isWhite
-          ? "border-b border-black/10 bg-white text-[#111111]"
-          : "bg-[#050505]/88 text-white backdrop-blur-xl"
-      }`}
-    >
-      <div className="mx-auto grid h-[82px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 lg:px-16">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--line)] bg-[var(--bg-main)]/92 text-[var(--text-main)] backdrop-blur-xl">
+      <div className="mx-auto grid h-[78px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 lg:px-16">
         <Link href="/" className="flex items-center gap-5 justify-self-start">
-          <RubikLogo inverted={isWhite} />
+          <RubikLogo />
 
           <div className="flex flex-col justify-center">
-            <div className="whitespace-nowrap text-[18px] font-light uppercase leading-none tracking-[0.46em]">
+            <div className="whitespace-nowrap text-[17px] font-light uppercase leading-none tracking-[0.44em]">
               Rubik ART
             </div>
-            <div
-              className={`mt-2 whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.22em] ${
-                isWhite ? "text-black/45" : "text-white/55"
-              }`}
-            >
+            <div className="mt-2 whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
               Interior | Architecture | Realisation
             </div>
           </div>
@@ -68,11 +49,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
             <a
               key={item.label}
               href={item.href}
-              className={`text-[11px] font-medium uppercase tracking-[0.22em] transition ${
-                isWhite
-                  ? "text-black/55 hover:text-black"
-                  : "text-white/62 hover:text-white"
-              }`}
+              className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--text-muted)] transition hover:text-[var(--text-main)]"
             >
               {item.label}
             </a>
@@ -82,58 +59,42 @@ export default function Header({ onQuizOpen }: HeaderProps) {
         <div className="hidden items-center justify-end gap-5 lg:flex">
           <a
             href={`tel:${content.company.phone}`}
-            className={`text-[11px] font-light tracking-[0.16em] transition ${
-              isWhite
-                ? "text-black/55 hover:text-black"
-                : "text-white/65 hover:text-white"
-            }`}
+            className="text-[10px] font-light tracking-[0.16em] text-[var(--text-muted)] transition hover:text-[var(--text-main)]"
           >
             {content.company.phoneDisplay}
           </a>
 
+          <button onClick={onQuizOpen} className="btn-minimal !px-4 !py-2">
+            Просчёт
+          </button>
+
           <button
-            onClick={onQuizOpen}
-            className={`border px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.22em] transition ${
-              isWhite
-                ? "border-black/35 text-black hover:border-black"
-                : "border-white/40 text-white hover:border-white"
-            }`}
+            onClick={() => setIsLight(!isLight)}
+            className="text-[10px] uppercase tracking-[0.22em] text-[var(--text-muted)] transition hover:text-[var(--text-main)]"
           >
-            Просчёт за 2 минуты
+            {isLight ? "Тёмная" : "Светлая"}
           </button>
         </div>
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="justify-self-end flex flex-col gap-1.5 p-2 lg:hidden"
+          className="flex flex-col gap-1.5 p-2 justify-self-end lg:hidden"
           aria-label="Меню"
         >
-          <span
-            className={`h-px w-7 transition ${
-              isWhite ? "bg-black" : "bg-white"
-            } ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`}
-          />
-          <span
-            className={`h-px w-7 transition ${
-              isWhite ? "bg-black" : "bg-white"
-            } ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`h-px w-7 transition ${
-              isWhite ? "bg-black" : "bg-white"
-            } ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
-          />
+          <span className={`h-px w-7 bg-current transition ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+          <span className={`h-px w-7 bg-current transition ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`h-px w-7 bg-current transition ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
         </button>
       </div>
 
       {menuOpen && (
-        <div className="border-t border-black/10 bg-white px-6 py-7 text-black lg:hidden">
+        <div className="border-t border-[var(--line)] bg-[var(--bg-main)] px-6 py-7 text-[var(--text-main)] lg:hidden">
           <nav className="mb-8 flex flex-col gap-6">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm uppercase tracking-[0.22em] text-black/60"
+                className="text-sm uppercase tracking-[0.22em] text-[var(--text-muted)]"
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
@@ -142,10 +103,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           </nav>
 
           <div className="flex flex-col gap-4">
-            <a
-              href={`tel:${content.company.phone}`}
-              className="text-base tracking-[0.08em] text-black"
-            >
+            <a href={`tel:${content.company.phone}`} className="text-base tracking-[0.08em]">
               {content.company.phoneDisplay}
             </a>
 
@@ -154,9 +112,16 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 onQuizOpen();
                 setMenuOpen(false);
               }}
-              className="w-full border border-black/35 px-6 py-4 text-xs uppercase tracking-[0.22em] text-black"
+              className="btn-minimal w-full"
             >
               Просчёт за 2 минуты
+            </button>
+
+            <button
+              onClick={() => setIsLight(!isLight)}
+              className="border border-[var(--line)] px-6 py-4 text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]"
+            >
+              {isLight ? "Включить тёмную тему" : "Включить светлую тему"}
             </button>
           </div>
         </div>

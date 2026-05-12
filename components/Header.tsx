@@ -8,6 +8,30 @@ interface HeaderProps {
   onQuizOpen: () => void;
 }
 
+function BrandMark({ light }: { light: boolean }) {
+  return (
+    <div className="relative h-12 w-12">
+      <div
+        className={`absolute left-0 top-0 h-6 w-9 rounded-r-full ${
+          light ? "bg-[#0D0D0D]" : "bg-white"
+        }`}
+      />
+      <div
+        className={`absolute left-0 top-7 h-5 w-4 ${
+          light ? "bg-[#0D0D0D]" : "bg-white"
+        }`}
+      />
+      <div
+        className={`absolute bottom-0 right-1 h-0 w-0 border-b-[20px] border-l-[20px] ${
+          light
+            ? "border-b-[#0D0D0D] border-l-transparent"
+            : "border-b-white border-l-transparent"
+        }`}
+      />
+    </div>
+  );
+}
+
 export default function Header({ onQuizOpen }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,47 +40,38 @@ export default function Header({ onQuizOpen }: HeaderProps) {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     onScroll();
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isLight = scrolled || menuOpen;
+  const light = scrolled || menuOpen;
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isLight
-          ? "border-b border-black/10 bg-[#F5F2ED]/95 text-[#111111] backdrop-blur-xl"
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+        light
+          ? "border-b border-black/10 bg-[#F7F7F7]/95 text-[#0D0D0D] backdrop-blur-2xl"
           : "bg-transparent text-white"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <div
-            className={`flex h-9 w-9 items-center justify-center rounded-lg border text-sm font-semibold tracking-[-0.04em] transition ${
-              isLight
-                ? "border-black/15 bg-black text-white"
-                : "border-white/25 bg-white/10 text-white backdrop-blur"
-            }`}
-          >
-            D
-          </div>
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-5 md:px-8">
+        <Link href="/" className="flex items-center gap-5">
+          <BrandMark light={light} />
 
-          <div className="leading-none">
-            <div className="text-xl font-semibold tracking-[-0.05em]">
-              DERZA<span className="font-light italic">i</span>
+          <div>
+            <div className="text-[20px] font-light uppercase tracking-[0.55em] leading-none">
+              DERZA<span className="tracking-[0.25em]">i</span>
             </div>
             <div
-              className={`mt-1 hidden text-[9px] uppercase tracking-[0.28em] md:block ${
-                isLight ? "text-black/45" : "text-white/55"
+              className={`mt-2 text-[8px] uppercase tracking-[0.36em] ${
+                light ? "text-black/45" : "text-white/55"
               }`}
             >
-              Design & renovation
+              Interior | Architecture | Realisation
             </div>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-9 md:flex">
           {content.nav.map((item) =>
             item.isDzen ? (
               <a
@@ -64,8 +79,10 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 href={content.company.dzenUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-xs uppercase tracking-[0.18em] transition hover:opacity-100 ${
-                  isLight ? "text-black/50 hover:text-black" : "text-white/60 hover:text-white"
+                className={`text-[10px] uppercase tracking-[0.3em] transition ${
+                  light
+                    ? "text-black/45 hover:text-black"
+                    : "text-white/55 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -74,8 +91,10 @@ export default function Header({ onQuizOpen }: HeaderProps) {
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-xs uppercase tracking-[0.18em] transition hover:opacity-100 ${
-                  isLight ? "text-black/50 hover:text-black" : "text-white/60 hover:text-white"
+                className={`text-[10px] uppercase tracking-[0.3em] transition ${
+                  light
+                    ? "text-black/45 hover:text-black"
+                    : "text-white/55 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -87,8 +106,10 @@ export default function Header({ onQuizOpen }: HeaderProps) {
         <div className="hidden items-center gap-5 md:flex">
           <a
             href={`tel:${content.company.phone}`}
-            className={`text-xs font-medium uppercase tracking-[0.16em] transition ${
-              isLight ? "text-black/60 hover:text-black" : "text-white/70 hover:text-white"
+            className={`text-[10px] uppercase tracking-[0.26em] transition ${
+              light
+                ? "text-black/50 hover:text-black"
+                : "text-white/60 hover:text-white"
             }`}
           >
             {content.company.phoneDisplay}
@@ -96,10 +117,10 @@ export default function Header({ onQuizOpen }: HeaderProps) {
 
           <button
             onClick={onQuizOpen}
-            className={`rounded-full px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] transition hover:-translate-y-0.5 ${
-              isLight
-                ? "bg-[#111111] text-white hover:bg-black"
-                : "bg-white text-black hover:bg-[#D8D0C4]"
+            className={`border px-6 py-3 text-[10px] font-medium uppercase tracking-[0.3em] transition hover:-translate-y-0.5 ${
+              light
+                ? "border-black bg-black text-white hover:bg-transparent hover:text-black"
+                : "border-white bg-white text-black hover:bg-transparent hover:text-white"
             }`}
           >
             Просчёт
@@ -112,25 +133,25 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           aria-label="Меню"
         >
           <span
-            className={`block h-px w-6 transition-all duration-300 ${
-              isLight ? "bg-black" : "bg-white"
+            className={`h-px w-7 transition ${
+              light ? "bg-black" : "bg-white"
             } ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
           />
           <span
-            className={`block h-px w-6 transition-all duration-300 ${
-              isLight ? "bg-black" : "bg-white"
+            className={`h-px w-7 transition ${
+              light ? "bg-black" : "bg-white"
             } ${menuOpen ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-px w-6 transition-all duration-300 ${
-              isLight ? "bg-black" : "bg-white"
+            className={`h-px w-7 transition ${
+              light ? "bg-black" : "bg-white"
             } ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
           />
         </button>
       </div>
 
       {menuOpen && (
-        <div className="border-t border-black/10 bg-[#F5F2ED] px-5 py-8 text-[#111111] md:hidden">
+        <div className="border-t border-black/10 bg-[#F7F7F7] px-5 py-8 text-black md:hidden">
           <nav className="mb-8 flex flex-col gap-6">
             {content.nav.map((item) =>
               item.isDzen ? (
@@ -139,7 +160,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                   href={content.company.dzenUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm uppercase tracking-[0.2em] text-black/60"
+                  className="text-sm uppercase tracking-[0.25em] text-black/55"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -148,7 +169,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-sm uppercase tracking-[0.2em] text-black/60"
+                  className="text-sm uppercase tracking-[0.25em] text-black/55"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -157,28 +178,22 @@ export default function Header({ onQuizOpen }: HeaderProps) {
             )}
           </nav>
 
-          <div className="rounded-3xl border border-black/10 bg-white/60 p-5">
-            <p className="mb-3 text-xs uppercase tracking-[0.22em] text-black/40">
-              Связаться
-            </p>
+          <a
+            href={`tel:${content.company.phone}`}
+            className="mb-5 block text-xl font-light tracking-[0.05em]"
+          >
+            {content.company.phoneDisplay}
+          </a>
 
-            <a
-              href={`tel:${content.company.phone}`}
-              className="mb-4 block text-xl font-semibold text-black"
-            >
-              {content.company.phoneDisplay}
-            </a>
-
-            <button
-              onClick={() => {
-                onQuizOpen();
-                setMenuOpen(false);
-              }}
-              className="w-full rounded-full bg-[#111111] px-6 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-white"
-            >
-              Просчёт за 2 минуты
-            </button>
-          </div>
+          <button
+            onClick={() => {
+              onQuizOpen();
+              setMenuOpen(false);
+            }}
+            className="w-full border border-black bg-black px-6 py-4 text-xs uppercase tracking-[0.25em] text-white"
+          >
+            Просчёт за 2 минуты
+          </button>
         </div>
       )}
     </header>

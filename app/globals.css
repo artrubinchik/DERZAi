@@ -2,113 +2,236 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================
+   RUBIK ART — GLOBAL PREMIUM STYLE
+========================================================= */
+
 :root {
-  --black: #111111;
-  --dark: #1A1A1A;
-  --white: #F8F7F4;
-  --gray: #B8B3AA;
-  --warm: #D8D0C4;
-  --line: #E3DED6;
+  /* DARK SEPIA THEME */
+  --bg-main: #15110d;
+  --bg-soft: #1d1712;
+  --bg-card: #221b15;
+
+  --text-main: #f4efe8;
+  --text-muted: rgba(244, 239, 232, 0.58);
+
+  --line: rgba(244, 239, 232, 0.12);
+
+  --button-bg: transparent;
+  --button-text: #f4efe8;
+  --button-border: rgba(244, 239, 232, 0.32);
+
+  --overlay-dark: rgba(0, 0, 0, 0.42);
+
+  --hero-opacity: 0.28;
+
+  --transition: 0.35s ease;
 }
 
-* {
-  box-sizing: border-box;
+/* LIGHT THEME */
+
+.light-theme {
+  --bg-main: #f5f1eb;
+  --bg-soft: #ebe5dc;
+  --bg-card: #ffffff;
+
+  --text-main: #111111;
+  --text-muted: rgba(17, 17, 17, 0.58);
+
+  --line: rgba(17, 17, 17, 0.1);
+
+  --button-bg: transparent;
+  --button-text: #111111;
+  --button-border: rgba(17, 17, 17, 0.18);
+
+  --overlay-dark: rgba(0, 0, 0, 0.08);
+
+  --hero-opacity: 0.16;
 }
+
+/* ========================================================= */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--white);
-  color: var(--black);
-  font-family: 'Manrope', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition:
+    background var(--transition),
+    color var(--transition);
+  overflow-x: hidden;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Scrollbar */
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  font-weight: 300;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  transition: opacity var(--transition);
+}
+
+a:hover {
+  opacity: 1;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-minimal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 11px 20px;
+
+  border: 1px solid var(--button-border);
+
+  background: var(--button-bg);
+
+  color: var(--button-text);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+
+  backdrop-filter: blur(10px);
+}
+
+.btn-minimal:hover {
+  border-color: var(--text-main);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.premium-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.24);
+}
+
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
+
+.hero-overlay {
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.72),
+      rgba(0,0,0,0.34),
+      rgba(0,0,0,0.62)
+    );
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--white);
+  background: var(--bg-main);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--warm);
-  border-radius: 2px;
+  background: rgba(255,255,255,0.14);
 }
 
-/* Selection */
+.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.14);
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
 ::selection {
-  background: var(--black);
-  color: var(--white);
+  background: rgba(255,255,255,0.14);
+  color: white;
 }
 
-/* Animations */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.light-theme ::selection {
+  background: rgba(0,0,0,0.14);
+  color: black;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.section-dark {
+  background: var(--bg-main);
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.section-soft {
+  background: var(--bg-soft);
 }
 
-.animate-fade-up {
-  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.text-main {
+  color: var(--text-main);
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease forwards;
+.text-muted {
+  color: var(--text-muted);
 }
 
-.animate-slide-in {
-  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.line-color {
+  border-color: var(--line);
 }
 
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-
-/* Opacity 0 before animation */
-.opacity-0-init {
-  opacity: 0;
+.fade-hover {
+  transition: opacity var(--transition);
 }
 
-/* Hover underline */
-.hover-underline {
-  position: relative;
-}
-.hover-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-.hover-underline:hover::after {
-  width: 100%;
+.fade-hover:hover {
+  opacity: 0.72;
 }

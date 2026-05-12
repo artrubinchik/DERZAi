@@ -5,7 +5,7 @@
 export const content = {
   company: {
     name: "Rubik ART",
-    tagline: "Дизайн интерьера и ремонт под ключ",
+    tagline: "Дизайн и ремонт под ключ",
     city: "Набережные Челны",
     phone: process.env.NEXT_PUBLIC_PHONE || "+79600742347",
     phoneDisplay: "+7 (960) 074-23-47",
@@ -15,7 +15,7 @@ export const content = {
   },
 
   hero: {
-  heading: "Дизайн интерьера и ремонт под ключ",
+  heading: "Дизайн и ремонт под ключ",
   subheading: "Создаём интерьеры для жизни.\nРеализуем без срывов и переделок.",
   ctaPrimary: "Просчёт за 2 минуты",
   ctaSecondary: "Пройти брифинг-анкету",
@@ -98,7 +98,7 @@ export const content = {
       duration: "4 месяца",
       budget: "от 2.5 млн ₽",
       style: "Современный минимализм",
-      image: "/images/project-1.jpg",
+      image: "public/images/project-1.jpg",
     },
     {
       id: 2,
@@ -107,7 +107,7 @@ export const content = {
       duration: "3 месяцев",
       budget: "от 4.2 млн ₽",
       style: "Современный модернизм",
-      image: "/images/project-2.jpg",
+      image: "public/images/project-2.jpg",
     },
     {
       id: 3,
@@ -116,14 +116,14 @@ export const content = {
       duration: "3 месяца",
       budget: "от 6 млн ₽",
       style: "Современная нео-классика",
-      image: "/images/project-3.jpg",
+      image: "public/images/project-3.jpg",
     },
   ],
 
   pricing: [
     {
       service: "Дизайн-проект",
-      price: "от 2 200 ₽/м²",
+      price: "от 2 000 ₽/м²",
       desc: "Концепция, планировки, 3D-визуализации, рабочая документация",
       features: ["Замер объекта", "Концепция интерьера", "3D-визуализации", "Рабочие чертежи", "Спецификации"],
     },
@@ -146,10 +146,10 @@ export const content = {
     name: "Рубинчик Артем",
     role: "Дизайнер интерьеров и экстерьеров,\nоснователь студии Rubik ART",
     quote: "Работаю с проектом от идеи до реализации. Лично отвечаю за каждый объект.",
-    image: "/images/artem.jpg",
+    image: "public/images/artem.jpg",
     stats: [
       { value: "13+", label: "лет в дизайне" },
-      { value: "40+", label: "реализованных проектов" },
+      { value: "30+", label: "реализованных проектов" },
       { value: "100%", label: "довольных клиентов" },
     ],
   },
@@ -157,7 +157,7 @@ export const content = {
   testimonials: [
     {
       name: "Анна К.",
-      project: "Квартира 74 м², Набережные Челны",
+      project: "Квартира 64 м², Набережные Челны",
       text: "Работа прошла спокойно и без сюрпризов. Результат полностью совпал с ожиданиями.",
       rating: 5,
     },

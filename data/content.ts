@@ -4,21 +4,20 @@
 
 export const content = {
   company: {
-    name: "DERZAi Group",
+    name: "Rubik ART",
     tagline: "Дизайн интерьера и ремонт под ключ",
     city: "Набережные Челны",
-    phone: process.env.NEXT_PUBLIC_PHONE || "+79171234567",
-    phoneDisplay: "+7 (917) 123-45-67",
+    phone: process.env.NEXT_PUBLIC_PHONE || "+79600742347",
+    phoneDisplay: "+7 (960) 074-23-47",
     dzenUrl: process.env.NEXT_PUBLIC_DZEN_URL || "https://dzen.ru/REPLACE_LINK",
-    briefFormUrl: process.env.NEXT_PUBLIC_BRIEF_FORM_URL || "https://forms.google.com/REPLACE_LINK",
-    replyTime: "Ответим в течение 15 минут",
+        replyTime: "Ответим в течение 15 минут",
   },
 
   hero: {
     heading: "Дизайн интерьера и ремонт под ключ в Набережных Челнах",
     subheading: "Создаём интерьеры для жизни.\nРеализуем без срывов и переделок.",
     ctaPrimary: "Просчёт за 2 минуты",
-    ctaSecondary: "Пройти брифинг-анкету",
+    
   },
 
   benefits: [

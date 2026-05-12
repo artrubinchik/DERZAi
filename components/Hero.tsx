@@ -94,7 +94,7 @@ export default function Hero({ onQuizOpen }: HeroProps) {
             className="relative opacity-0-init animate-fade-up"
             style={{ animationDelay: "200ms" }}
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-warm">
+            <div className="relative h-[520px] md:h-[620px] rounded-2xl overflow-hidden bg-warm">
               {/* Placeholder when no image */}
               <div className="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-black/40 to-transparent">
                 <div className="text-white">
@@ -104,13 +104,13 @@ export default function Hero({ onQuizOpen }: HeroProps) {
                 </div>
               </div>
               {/* Real image (uncomment when added) */}
-              {/* <Image
+              <Image
                 src="/images/hero.jpg"
                 alt="Интерьер от DERZAi Group"
                 fill
                 className="object-cover"
                 priority
-              /> */}
+              /> 
             </div>
 
             {/* Floating stat */}

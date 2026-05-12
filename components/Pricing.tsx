@@ -6,45 +6,46 @@ interface PricingProps {
 
 export default function Pricing({ onQuizOpen }: PricingProps) {
   return (
-    <section id="pricing" className="bg-[#0D0D0D] py-24 text-white md:py-36">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section
+      id="pricing"
+      className="section-dark py-24 text-main md:py-36"
+    >
+      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+        {/* HEADER */}
         <div className="mb-20 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
             <div className="mb-6 flex items-center gap-4">
-              <div className="h-px w-12 bg-white/60" />
-              <span className="text-xs uppercase tracking-[0.4em] text-white/45">
+              <div className="h-px w-12 bg-[var(--text-main)]/50" />
+              <span className="text-xs uppercase tracking-[0.42em] text-muted">
                 Стоимость услуг
               </span>
             </div>
 
-            <h2 className="text-5xl font-light leading-[0.98] tracking-[-0.06em] md:text-7xl">
+            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.06em] md:text-7xl">
               Прозрачный
               <br />
               старт проекта
             </h2>
           </div>
 
-          <p className="max-w-md text-sm font-light leading-relaxed text-white/45">
-            Цена зависит от площади, состояния объекта, состава работ и уровня
-            материалов. Начинаем с предварительного расчёта.
+          <p className="max-w-md text-sm font-light leading-relaxed text-muted">
+            Каждый проект рассчитывается индивидуально: площадь, уровень
+            материалов, сложность и сроки реализации.
           </p>
         </div>
 
+        {/* CARDS */}
         <div className="grid gap-5 md:grid-cols-3">
           {content.pricing.map((item, i) => (
             <div
               key={i}
-              className={`relative border p-8 transition duration-300 ${
+              className={`premium-card relative p-8 ${
                 item.highlight
-                  ? "border-white bg-white text-black"
-                  : "border-white/15 bg-white/[0.03] text-white hover:border-white/40"
+                  ? "border-[var(--text-main)] bg-[rgba(255,255,255,0.04)]"
+                  : ""
               }`}
             >
-              <div
-                className={`mb-10 text-[10px] uppercase tracking-[0.35em] ${
-                  item.highlight ? "text-black/45" : "text-white/35"
-                }`}
-              >
+              <div className="mb-10 text-[10px] uppercase tracking-[0.35em] text-muted">
                 {item.highlight ? "Популярно" : `0${i + 1}`}
               </div>
 
@@ -52,31 +53,21 @@ export default function Pricing({ onQuizOpen }: PricingProps) {
                 {item.service}
               </h3>
 
-              <p
-                className={`mt-6 text-4xl font-light tracking-[-0.06em] ${
-                  item.highlight ? "text-black" : "text-white"
-                }`}
-              >
+              <p className="mt-6 text-4xl font-light tracking-[-0.06em]">
                 {item.price}
               </p>
 
-              <p
-                className={`mt-6 min-h-[84px] text-sm font-light leading-relaxed ${
-                  item.highlight ? "text-black/55" : "text-white/45"
-                }`}
-              >
+              <p className="mt-6 min-h-[84px] text-sm font-light leading-relaxed text-muted">
                 {item.desc}
               </p>
 
-              <div className={`my-8 h-px ${item.highlight ? "bg-black/10" : "bg-white/10"}`} />
+              <div className="my-8 h-px bg-[var(--line)]" />
 
               <ul className="mb-10 flex flex-col gap-4">
                 {item.features.map((feature, j) => (
                   <li
                     key={j}
-                    className={`text-sm font-light ${
-                      item.highlight ? "text-black/65" : "text-white/55"
-                    }`}
+                    className="text-sm font-light text-muted"
                   >
                     — {feature}
                   </li>
@@ -85,11 +76,7 @@ export default function Pricing({ onQuizOpen }: PricingProps) {
 
               <button
                 onClick={onQuizOpen}
-                className={`w-full border px-6 py-4 text-xs uppercase tracking-[0.25em] transition ${
-                  item.highlight
-                    ? "border-black bg-black text-white hover:bg-transparent hover:text-black"
-                    : "border-white/25 text-white hover:border-white hover:bg-white hover:text-black"
-                }`}
+                className="btn-minimal w-full"
               >
                 Рассчитать
               </button>
@@ -97,8 +84,9 @@ export default function Pricing({ onQuizOpen }: PricingProps) {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-sm font-light text-white/35">
-          Точная стоимость рассчитывается индивидуально после обсуждения задачи.
+        <p className="mt-10 text-center text-sm font-light text-muted">
+          Финальная стоимость формируется после обсуждения задачи и анализа
+          объекта.
         </p>
       </div>
     </section>

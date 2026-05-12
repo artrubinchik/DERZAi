@@ -43,12 +43,12 @@ export default function Projects() {
                 }}
               >
                 {/* Real image (uncomment when added) */}
-                {/* <Image
+                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
-                /> */}
+                /> 
 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />

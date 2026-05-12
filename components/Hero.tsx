@@ -9,13 +9,13 @@ interface HeroProps {
 
 export default function Hero({ onQuizOpen }: HeroProps) {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#0D0D0D] text-white">
+    <section className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
       <div className="absolute inset-0">
         <Image
           src="/images/hero.jpg"
           alt="Интерьер от DERZAi"
           fill
-          className="object-cover opacity-70"
+          className="object-cover opacity-35"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-black/10" />

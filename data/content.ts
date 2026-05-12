@@ -10,6 +10,7 @@ export const content = {
     phone: process.env.NEXT_PUBLIC_PHONE || "+79600742347",
     phoneDisplay: "+7 (960) 074-23-47",
     dzenUrl: process.env.NEXT_PUBLIC_DZEN_URL || "https://dzen.ru/REPLACE_LINK",
+    briefFormUrl: process.env.NEXT_PUBLIC_BRIEF_FORM_URL || "https://forms.google.com/REPLACE_LINK",
         replyTime: "Ответим в течение 15 минут",
   },
 

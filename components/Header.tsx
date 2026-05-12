@@ -18,24 +18,40 @@ export default function Header({ onQuizOpen }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const textColor = scrolled || menuOpen ? "text-[#111111]" : "text-white";
+  const mutedColor = scrolled || menuOpen ? "text-black/55" : "text-white/65";
+  const lineColor = scrolled || menuOpen ? "bg-[#111111]" : "bg-white";
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-off-white/95 backdrop-blur-sm border-b border-line"
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || menuOpen
+          ? "border-b border-black/10 bg-[#F5F2ED]/95 backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
-        {/* Logo */} 
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-lg md:text-xl font-bold tracking-tight text-black">
-            Rubik<span className="text-gray">ART</span> 
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
+        {/* Logo */}
+        <Link href="/" className="group flex items-center gap-3">
+          <span
+            className={`text-xl font-semibold tracking-[-0.04em] transition ${textColor}`}
+          >
+            DERZA<span className="font-light italic">i</span>
+          </span>
+          <span
+            className={`hidden h-px w-8 transition md:block ${
+              scrolled || menuOpen ? "bg-black/25" : "bg-white/35"
+            }`}
+          />
+          <span
+            className={`hidden text-[10px] uppercase tracking-[0.28em] transition md:block ${mutedColor}`}
+          >
+            Design & Build
           </span>
         </Link>
 
-         {/* Desktop Nav */} 
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-8 md:flex">
           {content.nav.map((item) =>
             item.isDzen ? (
               <a
@@ -43,7 +59,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 href={content.company.dzenUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-gray hover:text-black transition-colors hover-underline"
+                className={`text-xs uppercase tracking-[0.18em] transition hover:opacity-100 ${mutedColor}`}
               >
                 {item.label}
               </a>
@@ -51,7 +67,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm text-gray hover:text-black transition-colors hover-underline"
+                className={`text-xs uppercase tracking-[0.18em] transition hover:opacity-100 ${mutedColor}`}
               >
                 {item.label}
               </a>
@@ -59,50 +75,55 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           )}
         </nav>
 
-         {/* Desktop Right */} 
-        <div className="hidden md:flex items-center gap-6">
+        {/* Desktop Right */}
+        <div className="hidden items-center gap-5 md:flex">
           <a
             href={`tel:${content.company.phone}`}
-            className="text-sm font-medium text-black hover:text-gray transition-colors"
+            className={`text-xs font-medium uppercase tracking-[0.16em] transition ${mutedColor}`}
           >
             {content.company.phoneDisplay}
           </a>
+
           <button
             onClick={onQuizOpen}
-            className="btn-primary"
+            className={`rounded-full px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] transition hover:-translate-y-0.5 ${
+              scrolled
+                ? "bg-[#111111] text-white hover:bg-black"
+                : "bg-white text-black hover:bg-[#D8D0C4]"
+            }`}
           >
-            Просчёт за 2 минуты
+            Просчёт
           </button>
         </div>
 
-         {/* Mobile burger */} 
+        {/* Mobile burger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="flex flex-col gap-1.5 p-2 md:hidden"
           aria-label="Меню"
         >
           <span
-            className={`block w-6 h-px bg-black transition-all duration-300 ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
+            className={`block h-px w-6 transition-all duration-300 ${lineColor} ${
+              menuOpen ? "translate-y-2 rotate-45" : ""
             }`}
           />
           <span
-            className={`block w-6 h-px bg-black transition-all duration-300 ${
+            className={`block h-px w-6 transition-all duration-300 ${lineColor} ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block w-6 h-px bg-black transition-all duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
+            className={`block h-px w-6 transition-all duration-300 ${lineColor} ${
+              menuOpen ? "-translate-y-2 -rotate-45" : ""
             }`}
           />
         </button>
       </div>
 
-       {/* Mobile menu */}  
+      {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-off-white border-t border-line px-5 py-6 animate-fade-in">
-          <nav className="flex flex-col gap-5 mb-6">
+        <div className="border-t border-black/10 bg-[#F5F2ED] px-5 py-8 md:hidden">
+          <nav className="mb-8 flex flex-col gap-6">
             {content.nav.map((item) =>
               item.isDzen ? (
                 <a
@@ -110,7 +131,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                   href={content.company.dzenUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base text-gray"
+                  className="text-sm uppercase tracking-[0.2em] text-black/60"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -119,7 +140,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-base text-gray"
+                  className="text-sm uppercase tracking-[0.2em] text-black/60"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -127,48 +148,25 @@ export default function Header({ onQuizOpen }: HeaderProps) {
               )
             )}
           </nav>
+
           <a
             href={`tel:${content.company.phone}`}
-            className="block text-base font-medium text-black mb-4"
+            className="mb-4 block text-lg font-semibold text-black"
           >
             {content.company.phoneDisplay}
           </a>
+
           <button
             onClick={() => {
               onQuizOpen();
               setMenuOpen(false);
             }}
-            className="btn-primary w-full"
+            className="w-full rounded-full bg-[#111111] px-6 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-white"
           >
             Просчёт за 2 минуты
           </button>
         </div>
       )}
-
-      <style jsx>{`
-        .btn-primary {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px 22px;
-          background: #111111;
-          color: #F8F7F4;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-          border-radius: 4px;
-          transition: background 0.2s ease, transform 0.1s ease;
-          cursor: pointer;
-          border: none;
-        }
-        .btn-primary:hover {
-          background: #1A1A1A;
-          transform: translateY(-1px);
-        }
-        .btn-primary:active {
-          transform: translateY(0);
-        }
-      `}</style>
     </header>
   );
 }

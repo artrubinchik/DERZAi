@@ -150,7 +150,7 @@ export const content = {
     stats: [
       { value: "13+", label: "лет в дизайне" },
       { value: "30+", label: "реализованных проектов" },
-      { value: "100%", label: "довольных клиентов" },
+      { value: "100%", label: "личный контроль" },
     ],
   },
 

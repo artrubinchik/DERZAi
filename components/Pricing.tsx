@@ -6,105 +6,89 @@ interface PricingProps {
 
 export default function Pricing({ onQuizOpen }: PricingProps) {
   return (
-    <section id="pricing" className="bg-[#F5F2ED] py-24 md:py-36 text-[#111111]">
+    <section id="pricing" className="bg-[#0D0D0D] py-24 text-white md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mb-20 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="mb-20 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
             <div className="mb-6 flex items-center gap-4">
-              <div className="h-px w-10 bg-[#111111]" />
-              <span className="text-xs uppercase tracking-[0.35em] text-black/45">
+              <div className="h-px w-12 bg-white/60" />
+              <span className="text-xs uppercase tracking-[0.4em] text-white/45">
                 Стоимость услуг
               </span>
             </div>
 
-            <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">
-              Прозрачный старт
+            <h2 className="text-5xl font-light leading-[0.98] tracking-[-0.06em] md:text-7xl">
+              Прозрачный
               <br />
-              без случайных цифр
+              старт проекта
             </h2>
           </div>
 
-          <p className="max-w-sm text-sm leading-relaxed text-black/45">
-            Финальная стоимость зависит от площади, состояния объекта, уровня
-            материалов и состава работ.
+          <p className="max-w-md text-sm font-light leading-relaxed text-white/45">
+            Цена зависит от площади, состояния объекта, состава работ и уровня
+            материалов. Начинаем с предварительного расчёта.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {content.pricing.map((item, i) => (
             <div
               key={i}
-              className={`relative overflow-hidden rounded-[28px] border p-7 transition duration-300 md:p-8 ${
+              className={`relative border p-8 transition duration-300 ${
                 item.highlight
-                  ? "border-[#111111] bg-[#111111] text-white shadow-2xl"
-                  : "border-black/10 bg-white/70 text-[#111111] hover:-translate-y-1 hover:border-black/25"
+                  ? "border-white bg-white text-black"
+                  : "border-white/15 bg-white/[0.03] text-white hover:border-white/40"
               }`}
             >
-              {item.highlight && (
-                <div className="mb-8 inline-flex rounded-full bg-[#D8D0C4] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black">
-                  Популярно
-                </div>
-              )}
+              <div
+                className={`mb-10 text-[10px] uppercase tracking-[0.35em] ${
+                  item.highlight ? "text-black/45" : "text-white/35"
+                }`}
+              >
+                {item.highlight ? "Популярно" : `0${i + 1}`}
+              </div>
 
-              {!item.highlight && (
-                <div className="mb-8 text-xs uppercase tracking-[0.22em] text-black/35">
-                  0{i + 1}
-                </div>
-              )}
-
-              <h3 className="text-2xl font-semibold tracking-[-0.03em]">
+              <h3 className="text-3xl font-light tracking-[-0.05em]">
                 {item.service}
               </h3>
 
               <p
-                className={`mt-5 text-4xl font-semibold tracking-[-0.05em] ${
-                  item.highlight ? "text-[#D8D0C4]" : "text-[#111111]"
+                className={`mt-6 text-4xl font-light tracking-[-0.06em] ${
+                  item.highlight ? "text-black" : "text-white"
                 }`}
               >
                 {item.price}
               </p>
 
               <p
-                className={`mt-5 min-h-[72px] text-sm leading-relaxed ${
-                  item.highlight ? "text-white/55" : "text-black/45"
+                className={`mt-6 min-h-[84px] text-sm font-light leading-relaxed ${
+                  item.highlight ? "text-black/55" : "text-white/45"
                 }`}
               >
                 {item.desc}
               </p>
 
-              <div
-                className={`my-8 h-px ${
-                  item.highlight ? "bg-white/15" : "bg-black/10"
-                }`}
-              />
+              <div className={`my-8 h-px ${item.highlight ? "bg-black/10" : "bg-white/10"}`} />
 
               <ul className="mb-10 flex flex-col gap-4">
                 {item.features.map((feature, j) => (
-                  <li key={j} className="flex gap-3 text-sm">
-                    <span
-                      className={`mt-0.5 ${
-                        item.highlight ? "text-[#D8D0C4]" : "text-black/35"
-                      }`}
-                    >
-                      ✓
-                    </span>
-                    <span
-                      className={
-                        item.highlight ? "text-white/75" : "text-black/55"
-                      }
-                    >
-                      {feature}
-                    </span>
+                  <li
+                    key={j}
+                    className={`text-sm font-light ${
+                      item.highlight ? "text-black/65" : "text-white/55"
+                    }`}
+                  >
+                    — {feature}
                   </li>
                 ))}
               </ul>
 
               <button
                 onClick={onQuizOpen}
-                className={`w-full rounded-full px-6 py-4 text-sm font-semibold uppercase tracking-[0.12em] transition ${
+                className={`w-full border px-6 py-4 text-xs uppercase tracking-[0.25em] transition ${
                   item.highlight
-                    ? "bg-white text-black hover:bg-[#D8D0C4]"
-                    : "border border-black/15 text-black hover:border-black hover:bg-black hover:text-white"
+                    ? "border-black bg-black text-white hover:bg-transparent hover:text-black"
+                    : "border-white/25 text-white hover:border-white hover:bg-white hover:text-black"
                 }`}
               >
                 Рассчитать
@@ -113,9 +97,8 @@ export default function Pricing({ onQuizOpen }: PricingProps) {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-sm text-black/40">
-          Точная стоимость рассчитывается индивидуально после обсуждения задачи
-          и состояния объекта.
+        <p className="mt-10 text-center text-sm font-light text-white/35">
+          Точная стоимость рассчитывается индивидуально после обсуждения задачи.
         </p>
       </div>
     </section>

@@ -8,65 +8,38 @@ interface HeaderProps {
   onQuizOpen: () => void;
 }
 
-function RubikLogo({ light }: { light: boolean }) {
-  const color = light ? "bg-[#111111]" : "bg-white";
-
+function RubikLogo() {
   return (
-    <div className="relative h-12 w-12 shrink-0">
-      <div className={`absolute left-0 top-0 h-[23px] w-[38px] rounded-r-full ${color}`} />
-      <div className={`absolute left-0 top-[28px] h-[20px] w-[17px] ${color}`} />
-      <div
-        className={`absolute bottom-0 right-[3px] h-0 w-0 border-b-[20px] border-l-[20px] ${
-          light
-            ? "border-b-[#111111] border-l-transparent"
-            : "border-b-white border-l-transparent"
-        }`}
-      />
+    <div className="relative h-[58px] w-[58px] shrink-0">
+      <div className="absolute left-0 top-0 h-[27px] w-[45px] rounded-r-full bg-white" />
+      <div className="absolute bottom-0 left-0 h-[24px] w-[20px] bg-white" />
+      <div className="absolute bottom-0 right-[2px] h-0 w-0 border-b-[24px] border-l-[24px] border-b-white border-l-transparent" />
     </div>
   );
 }
 
 export default function Header({ onQuizOpen }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const light = scrolled || menuOpen;
-
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
-        light
-          ? "border-b border-black/10 bg-[#F7F7F7]/95 text-[#111111] backdrop-blur-2xl"
-          : "bg-[#0D0D0D]/72 text-white backdrop-blur-xl"
-      }`}
-    >
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-5 md:px-8">
-        <Link href="/" className="flex items-center gap-5">
-          <RubikLogo light={light} />
+    <header className="fixed left-0 right-0 top-0 z-50 bg-[#050505]/82 text-white backdrop-blur-xl">
+      <div className="mx-auto flex h-[118px] max-w-[1920px] items-center justify-between px-8 md:px-16 lg:px-20">
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-8">
+          <RubikLogo />
 
           <div>
-            <div className="text-[20px] font-light uppercase leading-none tracking-[0.55em]">
+            <div className="text-[24px] font-light uppercase leading-none tracking-[0.62em]">
               RUBIK ART
             </div>
-            <div
-              className={`mt-2 text-[8px] uppercase tracking-[0.36em] ${
-                light ? "text-black/45" : "text-white/55"
-              }`}
-            >
+            <div className="mt-4 text-[10px] font-medium uppercase tracking-[0.22em] text-white/70">
               Interior | Architecture | Realisation
             </div>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        {/* NAV */}
+        <nav className="hidden items-center gap-12 lg:flex">
           {content.nav.map((item) =>
             item.isDzen ? (
               <a
@@ -74,23 +47,15 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 href={content.company.dzenUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-[10px] uppercase tracking-[0.3em] transition ${
-                  light
-                    ? "text-black/45 hover:text-black"
-                    : "text-white/55 hover:text-white"
-                }`}
+                className="text-[15px] font-medium uppercase tracking-[0.22em] text-white/82 transition hover:text-white"
               >
-                {item.label}
+                Дзен ↗
               </a>
             ) : (
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-[10px] uppercase tracking-[0.3em] transition ${
-                  light
-                    ? "text-black/45 hover:text-black"
-                    : "text-white/55 hover:text-white"
-                }`}
+                className="text-[15px] font-medium uppercase tracking-[0.22em] text-white/82 transition hover:text-white"
               >
                 {item.label}
               </a>
@@ -98,55 +63,38 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           )}
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        {/* RIGHT */}
+        <div className="hidden min-w-[340px] flex-col items-end gap-5 lg:flex">
           <a
             href={`tel:${content.company.phone}`}
-            className={`text-[10px] uppercase tracking-[0.26em] transition ${
-              light
-                ? "text-black/50 hover:text-black"
-                : "text-white/60 hover:text-white"
-            }`}
+            className="text-[16px] font-light tracking-[0.18em] text-white/85"
           >
             {content.company.phoneDisplay}
           </a>
 
           <button
             onClick={onQuizOpen}
-            className={`border px-6 py-3 text-[10px] font-medium uppercase tracking-[0.3em] transition hover:-translate-y-0.5 ${
-              light
-                ? "border-black bg-black text-white hover:bg-transparent hover:text-black"
-                : "border-white/70 bg-transparent text-white hover:bg-white hover:text-black"
-            }`}
+            className="border border-white/65 px-9 py-4 text-[14px] font-medium uppercase tracking-[0.24em] text-white transition hover:bg-white hover:text-black"
           >
             Просчёт за 2 минуты
           </button>
         </div>
 
+        {/* MOBILE BURGER */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex flex-col gap-1.5 p-2 md:hidden"
+          className="flex flex-col gap-2 p-2 lg:hidden"
           aria-label="Меню"
         >
-          <span
-            className={`h-px w-7 transition ${
-              light ? "bg-black" : "bg-white"
-            } ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
-          />
-          <span
-            className={`h-px w-7 transition ${
-              light ? "bg-black" : "bg-white"
-            } ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`h-px w-7 transition ${
-              light ? "bg-black" : "bg-white"
-            } ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
-          />
+          <span className={`h-px w-8 bg-white transition ${menuOpen ? "translate-y-[9px] rotate-45" : ""}`} />
+          <span className={`h-px w-8 bg-white transition ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`h-px w-8 bg-white transition ${menuOpen ? "-translate-y-[9px] -rotate-45" : ""}`} />
         </button>
       </div>
 
+      {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="border-t border-black/10 bg-[#F7F7F7] px-5 py-8 text-black md:hidden">
+        <div className="border-t border-white/10 bg-[#050505] px-8 py-8 lg:hidden">
           <nav className="mb-8 flex flex-col gap-6">
             {content.nav.map((item) =>
               item.isDzen ? (
@@ -155,16 +103,16 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                   href={content.company.dzenUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm uppercase tracking-[0.25em] text-black/55"
+                  className="text-sm uppercase tracking-[0.25em] text-white/70"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {item.label}
+                  Дзен ↗
                 </a>
               ) : (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-sm uppercase tracking-[0.25em] text-black/55"
+                  className="text-sm uppercase tracking-[0.25em] text-white/70"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -175,7 +123,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
 
           <a
             href={`tel:${content.company.phone}`}
-            className="mb-5 block text-xl font-light tracking-[0.05em]"
+            className="mb-5 block text-lg tracking-[0.12em] text-white"
           >
             {content.company.phoneDisplay}
           </a>
@@ -185,7 +133,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
               onQuizOpen();
               setMenuOpen(false);
             }}
-            className="w-full border border-black bg-black px-6 py-4 text-xs uppercase tracking-[0.25em] text-white"
+            className="w-full border border-white/70 px-6 py-4 text-xs uppercase tracking-[0.25em] text-white"
           >
             Просчёт за 2 минуты
           </button>

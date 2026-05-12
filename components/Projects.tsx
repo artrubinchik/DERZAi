@@ -2,69 +2,68 @@ import { content } from "@/data/content";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 md:py-32 bg-dark text-off-white">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+    <section
+      id="projects"
+      className="bg-[#111111] py-24 md:py-36 text-[#F5F2ED]"
+    >
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-warm" />
-              <span className="text-xs font-medium tracking-widest uppercase text-gray">
+        <div className="mb-20 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <div className="mb-6 flex items-center gap-4">
+              <div className="h-px w-10 bg-[#D8D0C4]" />
+              <span className="text-xs uppercase tracking-[0.35em] text-[#D8D0C4]/70">
                 Реализованные проекты
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-              Каждый проект —<br />
-              <span className="text-warm">наш лучший</span>
+
+            <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">
+              Пространства,
+              <br />
+              которые хочется
+              <span className="text-[#D8D0C4]"> проживать</span>
             </h2>
           </div>
-          <p className="text-gray text-sm max-w-xs leading-relaxed">
-            Работы, которыми мы гордимся. Реальные объекты, реальные бюджеты, довольные клиенты.
+
+          <p className="max-w-sm text-sm leading-relaxed text-white/45">
+            Каждый интерьер создаётся под образ жизни клиента. Без визуального
+            шума, случайных решений и шаблонных приёмов.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-3 gap-5">
-          {content.projects.map((project, i) => (
+        {/* Projects Grid */}
+        <div className="grid gap-6 md:grid-cols-3">
+          {content.projects.map((project) => (
             <div
               key={project.id}
-              className="group relative rounded-xl overflow-hidden cursor-pointer"
+              className="group relative overflow-hidden rounded-[28px] bg-[#1A1A1A]"
             >
-              {/* Image placeholder / real image */}
-              <div
-                className="aspect-[3/4] bg-gradient-to-br"
-                style={{
-                  background:
-                    i === 0
-                      ? "linear-gradient(135deg, #2A2A2A 0%, #3A3530 100%)"
-                      : i === 1
-                      ? "linear-gradient(135deg, #2A2822 0%, #3A3020 100%)"
-                      : "linear-gradient(135deg, #22282A 0%, #203035 100%)",
-                }}
-              >
-                {/* Real image (uncomment when added) */}
-                 <img
-  src={project.image}
-  alt={project.title}
-  className="object-cover w-full h-full"
-/>
+              {/* Image */}
+              <div className="relative h-[540px] overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-                {/* Info */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-xs text-warm/80 mb-1.5 tracking-wider uppercase">
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.28em] text-[#D8D0C4]/70">
                     {project.style}
                   </p>
-                  <h3 className="text-lg font-semibold text-off-white mb-3">
+
+                  <h3 className="text-2xl font-semibold leading-tight text-white">
                     {project.title}
                   </h3>
-                  <div className="flex gap-4 text-sm text-gray">
+
+                  <div className="mt-5 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-white/50">
                     <span>{project.area}</span>
-                    <span className="text-warm/30">·</span>
+                    <span>•</span>
                     <span>{project.duration}</span>
-                    <span className="text-warm/30">·</span>
+                    <span>•</span>
                     <span>{project.budget}</span>
                   </div>
                 </div>

@@ -98,7 +98,7 @@ export const content = {
       duration: "4 месяца",
       budget: "от 2.5 млн ₽",
       style: "Современный минимализм",
-      image: "public/images/project-1.jpg",
+      image: "/public/images/project-1.jpg",
     },
     {
       id: 2,
@@ -107,7 +107,7 @@ export const content = {
       duration: "3 месяцев",
       budget: "от 4.2 млн ₽",
       style: "Современный модернизм",
-      image: "public/images/project-2.jpg",
+      image: "/public/images/project-2.jpg",
     },
     {
       id: 3,
@@ -116,7 +116,7 @@ export const content = {
       duration: "3 месяца",
       budget: "от 6 млн ₽",
       style: "Современная нео-классика",
-      image: "public/images/project-3.jpg",
+      image: "/public/images/project-3.jpg",
     },
   ],
 
@@ -146,7 +146,7 @@ export const content = {
     name: "Рубинчик Артем",
     role: "Дизайнер интерьеров и экстерьеров,\nоснователь студии Rubik ART",
     quote: "Работаю с проектом от идеи до реализации. Лично отвечаю за каждый объект.",
-    image: "public/images/artem.jpg",
+    image: "/public/images/artem.jpg",
     stats: [
       { value: "13+", label: "лет в дизайне" },
       { value: "30+", label: "реализованных проектов" },

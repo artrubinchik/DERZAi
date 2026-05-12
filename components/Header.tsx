@@ -8,23 +8,17 @@ interface HeaderProps {
   onQuizOpen: () => void;
 }
 
-function BrandMark({ light }: { light: boolean }) {
+function RubikLogo({ light }: { light: boolean }) {
+  const color = light ? "bg-[#111111]" : "bg-white";
+
   return (
-    <div className="relative h-12 w-12">
+    <div className="relative h-12 w-12 shrink-0">
+      <div className={`absolute left-0 top-0 h-[23px] w-[38px] rounded-r-full ${color}`} />
+      <div className={`absolute left-0 top-[28px] h-[20px] w-[17px] ${color}`} />
       <div
-        className={`absolute left-0 top-0 h-6 w-9 rounded-r-full ${
-          light ? "bg-[#0D0D0D]" : "bg-white"
-        }`}
-      />
-      <div
-        className={`absolute left-0 top-7 h-5 w-4 ${
-          light ? "bg-[#0D0D0D]" : "bg-white"
-        }`}
-      />
-      <div
-        className={`absolute bottom-0 right-1 h-0 w-0 border-b-[20px] border-l-[20px] ${
+        className={`absolute bottom-0 right-[3px] h-0 w-0 border-b-[20px] border-l-[20px] ${
           light
-            ? "border-b-[#0D0D0D] border-l-transparent"
+            ? "border-b-[#111111] border-l-transparent"
             : "border-b-white border-l-transparent"
         }`}
       />
@@ -40,6 +34,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     onScroll();
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -49,17 +44,17 @@ export default function Header({ onQuizOpen }: HeaderProps) {
     <header
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
         light
-          ? "border-b border-black/10 bg-[#F7F7F7]/95 text-[#0D0D0D] backdrop-blur-2xl"
-          : "bg-transparent text-white"
+          ? "border-b border-black/10 bg-[#F7F7F7]/95 text-[#111111] backdrop-blur-2xl"
+          : "bg-[#0D0D0D]/72 text-white backdrop-blur-xl"
       }`}
     >
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-5 md:px-8">
         <Link href="/" className="flex items-center gap-5">
-          <BrandMark light={light} />
+          <RubikLogo light={light} />
 
           <div>
-            <div className="text-[20px] font-light uppercase tracking-[0.55em] leading-none">
-              DERZA<span className="tracking-[0.25em]">i</span>
+            <div className="text-[20px] font-light uppercase leading-none tracking-[0.55em]">
+              RUBIK ART
             </div>
             <div
               className={`mt-2 text-[8px] uppercase tracking-[0.36em] ${
@@ -120,10 +115,10 @@ export default function Header({ onQuizOpen }: HeaderProps) {
             className={`border px-6 py-3 text-[10px] font-medium uppercase tracking-[0.3em] transition hover:-translate-y-0.5 ${
               light
                 ? "border-black bg-black text-white hover:bg-transparent hover:text-black"
-                : "border-white bg-white text-black hover:bg-transparent hover:text-white"
+                : "border-white/70 bg-transparent text-white hover:bg-white hover:text-black"
             }`}
           >
-            Просчёт
+            Просчёт за 2 минуты
           </button>
         </div>
 

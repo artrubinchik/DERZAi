@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Logo */}
           <div>
             <span className="text-base font-bold text-off-white tracking-tight">
-              DERZA<span className="text-gray">i</span> Group
+              Rubi<span className="text-gray">K</span> ART
             </span>
             <p className="text-xs text-gray/60 mt-1">{content.company.tagline}</p>
           </div>

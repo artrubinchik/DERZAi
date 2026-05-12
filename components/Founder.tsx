@@ -13,7 +13,11 @@ export default function Founder() {
               {/* Placeholder */}
               <div className="w-full h-full flex items-end p-8 bg-gradient-to-t from-black/20 to-transparent">
                 {/* Real image (uncomment when added): */}
-                 <Image src={founder.image} alt={founder.name} fill className="object-cover" /> 
+                 <img
+  src={founder.image}
+  alt={founder.name}
+  className="object-cover w-full h-full"
+/> 
               </div>
             </div>
 

@@ -30,7 +30,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
         {/* Logo */} 
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg md:text-xl font-bold tracking-tight text-black">
-            Rubik<span className="text-gray">ART</span> Group
+            Rubik<span className="text-gray">ART</span> 
           </span>
         </Link>
 

@@ -146,7 +146,7 @@ export const content = {
     name: "Рубинчик Артем",
     role: "Дизайнер интерьеров и экстерьеров,\nоснователь студии Rubik ART",
     quote: "Работаю с проектом от идеи до реализации. Лично отвечаю за каждый объект.",
-    image: "/public/images/artem.jpg",
+    image: "/images/founder.jpg",
     stats: [
       { value: "13+", label: "лет в дизайне" },
       { value: "30+", label: "реализованных проектов" },

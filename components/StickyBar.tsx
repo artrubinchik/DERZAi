@@ -1,47 +1,34 @@
 "use client";
 
-import { content } from "@/data/content";
-
 interface StickyBarProps {
   onQuizOpen: () => void;
 }
 
 export default function StickyBar({ onQuizOpen }: StickyBarProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-30 md:hidden bg-off-white border-t border-line safe-area-pb">
-      <div className="flex">
+    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--line)] bg-[var(--bg-main)]/92 backdrop-blur-xl lg:hidden">
+      <div className="grid grid-cols-3">
         <button
           onClick={onQuizOpen}
-          className="flex-1 flex flex-col items-center justify-center py-3 gap-1 text-black hover:bg-warm/30 transition-colors border-r border-line"
+          className="border-r border-[var(--line)] py-4 text-[10px] uppercase tracking-[0.22em] text-main"
         >
-          <span className="text-lg leading-none">◈</span>
-          <span className="text-xs font-medium">Просчёт</span>
+          Просчёт
         </button>
 
         <a
-          href={content.company.briefFormUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 flex flex-col items-center justify-center py-3 gap-1 text-black hover:bg-warm/30 transition-colors border-r border-line"
+          href="#contact"
+          className="border-r border-[var(--line)] py-4 text-center text-[10px] uppercase tracking-[0.22em] text-main"
         >
-          <span className="text-lg leading-none">○</span>
-          <span className="text-xs font-medium">Бриф</span>
+          Контакты
         </a>
 
         <a
-          href={`tel:${content.company.phone}`}
-          className="flex-1 flex flex-col items-center justify-center py-3 gap-1 text-black hover:bg-warm/30 transition-colors"
+          href="tel:+79171234567"
+          className="py-4 text-center text-[10px] uppercase tracking-[0.22em] text-main"
         >
-          <span className="text-lg leading-none">☎</span>
-          <span className="text-xs font-medium">Звонок</span>
+          Звонок
         </a>
       </div>
-
-      <style jsx>{`
-        .safe-area-pb {
-          padding-bottom: env(safe-area-inset-bottom);
-        }
-      `}</style>
     </div>
   );
 }

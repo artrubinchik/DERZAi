@@ -57,7 +57,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
                 isWhite ? "text-[#111111]" : "text-white"
               }`}
             >
-              Rubik&nbsp;ART
+              RUBIK&nbsp;ART
             </div>
 
             <div

@@ -94,7 +94,7 @@ export default function Hero({ onQuizOpen }: HeroProps) {
             className="relative opacity-0-init animate-fade-up"
             style={{ animationDelay: "200ms" }}
           >
-            <div className="relative h-[520px] md:h-[620px] rounded-2xl overflow-hidden bg-warm">
+            <div className="relative h-[2000px] md:h-[620px] rounded-2xl overflow-hidden bg-warm">
               {/* Placeholder when no image */}
              <div className="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-black/40 to-transparent">
                 <div className="text-white">
@@ -115,8 +115,8 @@ export default function Hero({ onQuizOpen }: HeroProps) {
 
             {/* Floating stat */}
             <div className="absolute -left-6 top-1/3 bg-off-white border border-line rounded-xl p-4 shadow-sm">
-              <p className="text-2xl font-bold text-black">50+</p>
-              <p className="text-xs text-gray">проектов</p>
+              <p className="text-2xl font-bold text-black">30+</p>
+              <p className="text-xs text-gray">реализованных проектов</p>
             </div>
             <div className="absolute -right-4 bottom-16 bg-black rounded-xl p-4 shadow-sm">
               <p className="text-2xl font-bold text-off-white">13+</p>

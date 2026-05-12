@@ -2,43 +2,52 @@ import { content } from "@/data/content";
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-[#F7F7F7] py-24 text-[#0D0D0D] md:py-36">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section
+      id="projects"
+      className="section-soft py-24 text-main md:py-36"
+    >
+      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+        {/* HEADER */}
         <div className="mb-20 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
             <div className="mb-6 flex items-center gap-4">
-              <div className="h-px w-12 bg-black" />
-              <span className="text-xs uppercase tracking-[0.4em] text-black/45">
+              <div className="h-px w-12 bg-[var(--text-main)]/50" />
+              <span className="text-xs uppercase tracking-[0.42em] text-muted">
                 Реализованные проекты
               </span>
             </div>
 
-            <h2 className="text-5xl font-light leading-[0.98] tracking-[-0.06em] md:text-7xl">
+            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.06em] md:text-7xl">
               Пространства
               <br />
               с характером
             </h2>
           </div>
 
-          <p className="max-w-md text-sm font-light leading-relaxed text-black/50">
-            Каждый проект строится на геометрии, функциональности, чистоте
-            материалов и внимании к деталям.
+          <p className="max-w-md text-sm font-light leading-relaxed text-muted">
+            Архитектурный минимализм, продуманная геометрия и атмосфера,
+            которая ощущается даже в деталях.
           </p>
         </div>
 
+        {/* GRID */}
         <div className="grid gap-5 md:grid-cols-3">
           {content.projects.map((project) => (
-            <article key={project.id} className="group relative overflow-hidden bg-black">
+            <article
+              key={project.id}
+              className="premium-card group relative overflow-hidden"
+            >
               <div className="relative h-[560px] overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-                  <p className="mb-3 text-[10px] uppercase tracking-[0.35em] text-white/50">
+                  <p className="mb-3 text-[10px] uppercase tracking-[0.35em] text-white/45">
                     {project.style}
                   </p>
 
@@ -46,7 +55,7 @@ export default function Projects() {
                     {project.title}
                   </h3>
 
-                  <div className="mt-5 flex flex-wrap gap-3 text-[10px] uppercase tracking-[0.25em] text-white/45">
+                  <div className="mt-5 flex flex-wrap gap-3 text-[10px] uppercase tracking-[0.24em] text-white/42">
                     <span>{project.area}</span>
                     <span>—</span>
                     <span>{project.duration}</span>

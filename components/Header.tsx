@@ -27,14 +27,14 @@ export default function Header({ onQuizOpen }: HeaderProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
-        {/* Logo */}
+        Logo 
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg md:text-xl font-bold tracking-tight text-black">
-            DERZA<span className="text-gray">i</span> Group
+            Rubik<span className="text-gray">ART</span> Group
           </span>
         </Link>
 
-        {/* Desktop Nav */}
+         Desktop Nav 
         <nav className="hidden md:flex items-center gap-8">
           {content.nav.map((item) =>
             item.isDzen ? (
@@ -59,7 +59,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           )}
         </nav>
 
-        {/* Desktop Right */}
+         Desktop Right 
         <div className="hidden md:flex items-center gap-6">
           <a
             href={`tel:${content.company.phone}`}
@@ -75,7 +75,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           </button>
         </div>
 
-        {/* Mobile burger */}
+         Mobile burger 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden flex flex-col gap-1.5 p-2"
@@ -99,7 +99,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
         </button>
       </div>
 
-      {/* Mobile menu */}
+       Mobile menu 
       {menuOpen && (
         <div className="md:hidden bg-off-white border-t border-line px-5 py-6 animate-fade-in">
           <nav className="flex flex-col gap-5 mb-6">

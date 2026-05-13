@@ -2,45 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================================================
-   RUBIK ART — PREMIUM GLOBAL STYLE
-========================================================= */
-
 :root {
-  --bg-main: #080808;
-  --bg-soft: #111111;
-  --bg-card: rgba(255, 255, 255, 0.03);
-
-  --text-main: #f5f5f2;
-  --text-muted: rgba(245, 245, 242, 0.56);
-
-  --line: rgba(245, 245, 242, 0.1);
-
-  --button-bg: transparent;
-  --button-text: #f5f5f2;
-  --button-border: rgba(245, 245, 242, 0.24);
-
-  --transition: 0.35s ease;
-}
-
-.light-theme {
-  --bg-main: #f5f3ee;
-  --bg-soft: #ebe8e1;
-  --bg-card: rgba(0, 0, 0, 0.03);
+  --bg-light: #f7f7f7;
+  --bg-main: #f7f7f7;
+  --bg-soft: #f7f7f7;
+  --bg-card: rgba(0, 0, 0, 0.025);
 
   --text-main: #111111;
-  --text-muted: rgba(17, 17, 17, 0.56);
+  --text-muted: rgba(17, 17, 17, 0.52);
 
-  --line: rgba(17, 17, 17, 0.1);
+  --line: rgba(17, 17, 17, 0.12);
 
   --button-bg: transparent;
   --button-text: #111111;
-  --button-border: rgba(17, 17, 17, 0.18);
-}
+  --button-border: rgba(17, 17, 17, 0.22);
 
-/* =========================================================
-   BASE
-========================================================= */
+  --transition: 0.35s ease;
+}
 
 html {
   scroll-behavior: smooth;
@@ -49,27 +27,12 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-
-  background: var(--bg-main);
+  background: var(--bg-light);
   color: var(--text-main);
-
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
-
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
-  transition:
-    background var(--transition),
-    color var(--transition);
 }
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
 
 h1,
 h2,
@@ -78,12 +41,10 @@ h4,
 h5,
 h6 {
   margin: 0;
-
+  color: var(--text-main);
   font-weight: 300;
   line-height: 0.96;
   letter-spacing: -0.055em;
-
-  color: var(--text-main);
 }
 
 p {
@@ -96,34 +57,19 @@ a {
   text-decoration: none;
 }
 
-/* =========================================================
-   BUTTONS
-========================================================= */
-
 .btn-minimal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   padding: 10px 18px;
-
   border: 1px solid var(--button-border);
-
-  background: var(--button-bg);
-
+  background: transparent;
   color: var(--button-text);
-
   font-size: 10px;
   font-weight: 500;
-
   letter-spacing: 0.22em;
   text-transform: uppercase;
-
-  transition:
-    border-color var(--transition),
-    background var(--transition),
-    color var(--transition),
-    transform var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .btn-minimal:hover {
@@ -131,113 +77,35 @@ a {
   transform: translateY(-1px);
 }
 
-/* =========================================================
-   CARDS
-========================================================= */
-
 .premium-card {
   background: var(--bg-card);
-
   border: 1px solid var(--line);
-
-  backdrop-filter: blur(10px);
-
-  transition:
-    border-color var(--transition),
-    transform var(--transition),
-    background var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .premium-card:hover {
+  border-color: rgba(0, 0, 0, 0.22);
   transform: translateY(-2px);
-
-  border-color: rgba(255, 255, 255, 0.24);
 }
 
-.light-theme .premium-card:hover {
-  border-color: rgba(0, 0, 0, 0.16);
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section-dark {
-  position: relative;
-  background: var(--bg-main);
-}
-
+.section-dark,
 .section-soft {
   position: relative;
-  background: var(--bg-soft);
+  background: var(--bg-light);
+  color: var(--text-main);
 }
 
 .section-dark::after,
-.section-soft::after {
+.section-soft::after,
+section::after {
   content: "";
-
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-
   height: 1px;
-
   background: var(--line);
 }
-
-/* =========================================================
-   GRAPHIC GRID
-========================================================= */
-
-body::before {
-  content: "";
-
-  position: fixed;
-  inset: 0;
-
-  pointer-events: none;
-
-  background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-
-  background-size: 120px 120px;
-
-  opacity: 0.22;
-
-  z-index: -1;
-}
-
-.light-theme body::before {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.028) 1px, transparent 1px);
-}
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-main);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.12);
-}
-
-.light-theme ::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.14);
-}
-
-/* =========================================================
-   TEXT HELPERS
-========================================================= */
 
 .text-main {
   color: var(--text-main);
@@ -247,16 +115,20 @@ body::before {
   color: var(--text-muted);
 }
 
-/* =========================================================
-   SELECTION
-========================================================= */
-
-::selection {
-  background: rgba(255,255,255,0.16);
-  color: white;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.32;
+  z-index: -1;
 }
 
-.light-theme ::selection {
+::selection {
   background: rgba(0,0,0,0.12);
   color: black;
 }

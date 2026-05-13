@@ -55,7 +55,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="border-t border-[var(--line)] text-[9px] uppercase tracking-[0.22em] transition hover:bg-black hover:text-white md:border-l md:border-t-0"
+            className="border-t border-[var(--line)] text-[9px] uppercase tracking-[0.22em] transition hover:bg-[var(--bg-soft)] hover:text-[var(--text-main)] md:border-l md:border-t-0"
           >
             {loading ? "Отправка..." : "Отправить"}
           </button>

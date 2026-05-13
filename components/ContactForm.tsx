@@ -16,8 +16,15 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="section-soft py-16 md:py-22">
-      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+    <section id="contact" className="section-soft relative overflow-hidden py-16 md:py-22">
+      <img
+        src="/images/contact-bg.jpg"
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover grayscale opacity-[0.16]"
+      />
+      <div className="absolute inset-0 bg-[var(--bg-main)]/86" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="mb-10 flex items-center justify-between">
           <div>
             <p className="mb-4 text-[10px] uppercase tracking-[0.32em] text-muted">
@@ -32,7 +39,7 @@ export default function ContactForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="grid gap-px border border-[var(--line)] md:grid-cols-4"
+          className="grid gap-px border border-[var(--line)] bg-[var(--bg-main)]/35 backdrop-blur-sm md:grid-cols-4"
         >
           <input
             type="text"
@@ -55,7 +62,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="border-t border-[var(--line)] text-[9px] uppercase tracking-[0.22em] transition hover:bg-[var(--bg-soft)] hover:text-[var(--text-main)] md:border-l md:border-t-0"
+            className="border-t border-[var(--line)] text-[9px] uppercase tracking-[0.22em] transition hover:bg-black hover:text-white md:border-l md:border-t-0"
           >
             {loading ? "Отправка..." : "Отправить"}
           </button>

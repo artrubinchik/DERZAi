@@ -2,23 +2,23 @@ import { content } from "@/data/content";
 
 function FooterLogo() {
   return (
-    <div className="relative h-[110px] w-[110px] shrink-0">
+    <div className="relative h-[118px] w-[118px] shrink-0">
       {/* Верхняя форма */}
-      <div className="absolute left-0 top-0 h-[52px] w-[86px] rounded-r-full border border-current" />
+      <div className="absolute left-0 top-0 h-[56px] w-[92px] rounded-r-full border border-current bg-current" />
 
       {/* Нижний квадрат */}
-      <div className="absolute bottom-0 left-0 h-[46px] w-[46px] border border-current" />
+      <div className="absolute bottom-0 left-0 h-[50px] w-[50px] border border-current bg-current" />
 
-      {/* Замкнутый треугольник */}
+      {/* Нижний треугольник */}
       <svg
         className="absolute bottom-0 right-0"
-        width="46"
-        height="46"
-        viewBox="0 0 46 46"
-        fill="none"
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="currentColor"
       >
         <path
-          d="M1 45V1L45 45H1Z"
+          d="M1 49V1L49 49H1Z"
           stroke="currentColor"
           strokeWidth="1"
         />
@@ -26,7 +26,6 @@ function FooterLogo() {
     </div>
   );
 }
-
 export default function Footer() {
   return (
     <footer className="bg-[var(--bg-main)] text-[var(--text-main)]">

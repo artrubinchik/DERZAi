@@ -74,3 +74,6 @@ a {
 .dark-theme header {
   color: var(--text-main);
 }
+.dark-theme {
+  color-scheme: dark;
+}

@@ -3,17 +3,25 @@ import { content } from "@/data/content";
 function FooterLogo() {
   return (
     <div className="relative h-[110px] w-[110px] shrink-0">
-      <div className="absolute left-0 top-0 h-[54px] w-[88px] rounded-r-full border border-current" />
-      <div className="absolute bottom-0 left-0 h-[48px] w-[40px] border border-current" />
+      {/* Верхняя форма */}
+      <div className="absolute left-0 top-0 h-[52px] w-[86px] rounded-r-full border border-current" />
 
+      {/* Нижний квадрат */}
+      <div className="absolute bottom-0 left-0 h-[46px] w-[46px] border border-current" />
+
+      {/* Замкнутый треугольник */}
       <svg
         className="absolute bottom-0 right-0"
-        width="52"
-        height="52"
-        viewBox="0 0 52 52"
+        width="46"
+        height="46"
+        viewBox="0 0 46 46"
         fill="none"
       >
-        <path d="M1 51V1L51 51H1Z" stroke="currentColor" strokeWidth="1" />
+        <path
+          d="M1 45V1L45 45H1Z"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
       </svg>
     </div>
   );

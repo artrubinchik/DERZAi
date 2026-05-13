@@ -56,3 +56,21 @@ a {
 .dark-theme .founder-dark {
   display: block;
 }
+.dark-theme body {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.dark-theme section {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.dark-theme footer {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.dark-theme header {
+  color: var(--text-main);
+}

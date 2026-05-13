@@ -4,72 +4,57 @@ export default function Founder() {
   const { founder } = content;
 
   return (
-    <section
-      className="section-soft py-24 text-main md:py-36"
-    >
+    <section className="section-soft py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <div className="grid gap-16 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-24">
+        <div className="grid gap-14 md:grid-cols-[420px_1fr] md:items-center">
           {/* PHOTO */}
           <div className="relative">
-            <div className="premium-card relative h-[620px] overflow-hidden">
+            <div className="premium-card relative h-[480px] overflow-hidden">
               <img
                 src={founder.image}
                 alt={founder.name}
                 className="h-full w-full object-cover grayscale transition duration-700 hover:grayscale-0"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-            </div>
-
-            <div className="absolute -bottom-10 left-6 right-6 border border-[var(--line)] bg-[rgba(20,20,20,0.45)] p-6 backdrop-blur-xl md:-right-14 md:left-auto md:max-w-sm">
-              <p className="text-sm font-light leading-relaxed text-[var(--text-main)]/78">
-                “{founder.quote}”
-              </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
           </div>
 
-          {/* TEXT */}
-          <div className="pt-8 md:pt-0">
-            <div className="mb-8 flex items-center gap-4">
-              <div className="h-px w-12 bg-[var(--text-main)]/50" />
-              <span className="text-xs uppercase tracking-[0.4em] text-muted">
+          {/* CONTENT */}
+          <div>
+            <div className="mb-5 flex items-center gap-4">
+              <div className="h-px w-10 bg-[var(--text-main)]/40" />
+
+              <span className="text-[10px] uppercase tracking-[0.36em] text-muted">
                 Основатель
               </span>
             </div>
 
-            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.06em] md:text-7xl">
+            <h2 className="text-4xl font-light leading-[0.96] tracking-[-0.055em] md:text-6xl">
               {founder.name}
             </h2>
 
-            <p className="mt-8 max-w-xl whitespace-pre-line text-lg font-light leading-relaxed text-muted">
+            <p className="mt-7 max-w-xl whitespace-pre-line text-base font-light leading-relaxed text-muted">
               {founder.role}
             </p>
 
-            {/* STATS */}
-            <div className="mt-12 grid gap-8 border-t border-[var(--line)] pt-8 sm:grid-cols-3">
+            <div className="mt-10 grid max-w-xl grid-cols-3 border-t border-[var(--line)] pt-8">
               {founder.stats.map((stat, i) => (
                 <div key={i}>
-                  <p className="text-4xl font-light tracking-[-0.06em]">
+                  <p className="text-3xl font-light tracking-[-0.05em]">
                     {stat.value}
                   </p>
 
-                  <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted">
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-muted">
                     {stat.label}
                   </p>
                 </div>
               ))}
             </div>
 
-            {/* APPROACH */}
-            <div className="premium-card mt-12 p-7">
-              <p className="text-xs uppercase tracking-[0.35em] text-muted">
-                Подход
-              </p>
-
-              <p className="mt-5 max-w-2xl text-xl font-light leading-relaxed text-muted">
-                Пространство должно быть не просто визуально эффектным.
-                Интерьер обязан работать как единая система:
-                планировка, свет, материалы, бюджет и реализация.
+            <div className="mt-10 border-l border-[var(--line)] pl-6">
+              <p className="max-w-2xl text-base font-light leading-relaxed text-muted">
+                “{founder.quote}”
               </p>
             </div>
           </div>

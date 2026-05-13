@@ -9,9 +9,9 @@ function FooterLogo() {
       {/* Нижний квадрат */}
       <div className="absolute bottom-0 left-0 h-[50px] w-[50px] border border-current bg-current" />
 
-      {/* Нижний треугольник */}
+      {/* Треугольник */}
       <svg
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 left-[54px]"
         width="50"
         height="50"
         viewBox="0 0 50 50"

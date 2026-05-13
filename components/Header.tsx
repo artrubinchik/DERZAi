@@ -11,17 +11,25 @@ interface HeaderProps {
 function PremiumLogo() {
   return (
     <div className="relative h-[58px] w-[58px] shrink-0">
+      {/* Верхняя форма */}
       <div className="absolute left-0 top-0 h-[28px] w-[46px] rounded-r-full border border-current" />
-      <div className="absolute bottom-0 left-0 h-[25px] w-[21px] border border-current" />
 
+      {/* Нижний квадрат */}
+      <div className="absolute bottom-0 left-0 h-[24px] w-[24px] border border-current" />
+
+      {/* Замкнутый треугольник */}
       <svg
         className="absolute bottom-0 right-0"
-        width="26"
-        height="26"
-        viewBox="0 0 26 26"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
       >
-        <path d="M1 25V1L25 25H1Z" stroke="currentColor" strokeWidth="1" />
+        <path
+          d="M1 23V1L23 23H1Z"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
       </svg>
     </div>
   );

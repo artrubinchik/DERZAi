@@ -2,9 +2,9 @@ import { content } from "@/data/content";
 
 function FooterLogo() {
   return (
-    <div className="relative h-[118px] w-[118px] shrink-0">
+    <div className="relative h-[122px] w-[122px] shrink-0">
       {/* Верхняя форма */}
-      <div className="absolute left-0 top-0 h-[56px] w-[92px] rounded-r-full border border-current bg-current" />
+      <div className="absolute left-0 top-[8px] h-[56px] w-[92px] rounded-r-full border border-current bg-current" />
 
       {/* Нижний квадрат */}
       <div className="absolute bottom-0 left-0 h-[50px] w-[50px] border border-current bg-current" />
@@ -26,7 +26,6 @@ function FooterLogo() {
     </div>
   );
 }
-
 export default function Footer() {
   return (
     <footer className="bg-[var(--bg-main)] text-[var(--text-main)] border-t border-[var(--line)]">

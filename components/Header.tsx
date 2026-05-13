@@ -1,61 +1,154 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { content } from "@/data/content";
 
-interface HeroProps {
-  onQuizOpen?: () => void;
+interface HeaderProps {
+  onQuizOpen: () => void;
 }
 
-export default function Hero({ onQuizOpen }: HeroProps) {
+function PremiumLogo() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black text-white">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero.jpg"
-          alt="Rubik ART интерьер"
-          fill
-          priority
-          className="object-cover grayscale-[20%] opacity-[0.72]"
-        />
+    <div className="relative h-[54px] w-[54px] shrink-0">
+      <div className="absolute left-0 top-0 h-[26px] w-[42px] rounded-r-full border border-current" />
+      <div className="absolute bottom-0 left-0 h-[24px] w-[1px] bg-current" />
+      <div className="absolute bottom-0 left-[18px] h-[24px] w-[1px] bg-current" />
+      <div className="absolute bottom-0 right-[8px] h-[24px] w-[1px] rotate-[-28deg] bg-current origin-bottom" />
+    </div>
+  );
+}
 
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.70),rgba(0,0,0,0.22),rgba(0,0,0,0.48))]" />
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[var(--bg-main)] to-transparent" />
-      </div>
+export default function Header({ onQuizOpen }: HeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+  const [filled, setFilled] = useState(false);
 
-      <div className="absolute inset-0 opacity-[0.08]">
-        <div className="absolute left-0 top-0 h-px w-full bg-white" />
-        <div className="absolute left-1/3 top-0 h-full w-px bg-white" />
-        <div className="absolute right-1/3 top-0 h-full w-px bg-white" />
-      </div>
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark-theme", dark);
+  }, [dark]);
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-28 md:px-12 lg:px-16">
-        <div className="max-w-5xl">
-          <div className="mb-8 flex items-center gap-4">
-            <div className="h-px w-14 bg-white/45" />
-            <span className="text-[10px] uppercase tracking-[0.42em] text-white/65">
-              {content.company.city}
-            </span>
+  useEffect(() => {
+    const onScroll = () => setFilled(window.scrollY > window.innerHeight * 0.72);
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navItems = content.nav.filter((item) => !item.isDzen);
+  const darkHeader = !filled && !menuOpen;
+
+  return (
+    <header
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-700 ${
+        darkHeader
+          ? "bg-transparent text-white"
+          : "border-b border-[var(--line)] bg-[var(--bg-main)] text-[var(--text-main)]"
+      }`}
+    >
+      <div className="mx-auto grid h-[92px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 lg:px-16">
+        <Link href="/" className="flex items-center gap-5 justify-self-start">
+          <PremiumLogo />
+
+          <div>
+            <div className="whitespace-nowrap text-[19px] font-light uppercase leading-none tracking-[0.48em]">
+              Rubik ART
+            </div>
+
+            <div
+              className={`mt-2 whitespace-nowrap text-[8px] uppercase tracking-[0.24em] ${
+                darkHeader ? "text-white/62" : "text-[var(--text-muted)]"
+              }`}
+            >
+              Interior | Architecture | Realisation
+            </div>
           </div>
+        </Link>
 
-          <h1 className="max-w-4xl text-4xl font-light leading-[0.94] tracking-[-0.06em] text-white md:text-6xl lg:text-[78px]">
-            Создаём интерьеры,
-            <br />
-            в которых пространство
-            <br />
-            работает на вас
-          </h1>
+        <nav className="hidden items-center justify-center gap-8 lg:flex">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className={`text-[11px] uppercase tracking-[0.24em] transition ${
+                darkHeader
+                  ? "text-white/70 hover:text-white"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
 
-          <div className="mt-12 max-w-2xl border-l border-white/22 pl-8">
-            <p className="text-base font-light leading-relaxed text-white/70 md:text-lg">
-              Rubik ART проектирует и реализует частные и коммерческие
-              пространства полного цикла — от архитектурной идеи до готового
-              интерьера, где эстетика, функция и качество собраны в единую
-              систему.
-            </p>
-          </div>
+        <div className="hidden items-center justify-end gap-4 lg:flex">
+          <a
+            href={`tel:${content.company.phone}`}
+            className={`text-[10px] uppercase tracking-[0.18em] transition ${
+              darkHeader
+                ? "text-white/68 hover:text-white"
+                : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+            }`}
+          >
+            {content.company.phoneDisplay}
+          </a>
+
+          <button
+            onClick={onQuizOpen}
+            className={`border px-4 py-2 text-[9px] uppercase tracking-[0.2em] transition ${
+              darkHeader
+                ? "border-white/35 text-white hover:border-white"
+                : "border-[var(--button-border)] text-[var(--text-main)] hover:border-[var(--text-main)]"
+            }`}
+          >
+            Просчёт
+          </button>
+
+          <button
+            onClick={() => setDark(!dark)}
+            className={`border px-4 py-2 text-[8px] uppercase tracking-[0.18em] transition ${
+              darkHeader
+                ? "border-white/25 text-white/60 hover:text-white"
+                : "border-[var(--line)] text-[var(--text-muted)] hover:text-[var(--text-main)]"
+            }`}
+          >
+            {dark ? "Светлая версия" : "Тёмная версия"}
+          </button>
         </div>
+
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex flex-col gap-1.5 p-2 justify-self-end lg:hidden"
+          aria-label="Меню"
+        >
+          <span className="h-px w-7 bg-current" />
+          <span className="h-px w-7 bg-current" />
+        </button>
       </div>
-    </section>
+
+      {menuOpen && (
+        <div className="border-t border-[var(--line)] bg-[var(--bg-main)] px-6 py-7 text-[var(--text-main)] lg:hidden">
+          <nav className="mb-8 flex flex-col gap-5">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-[10px] uppercase tracking-[0.22em] text-[var(--text-muted)]"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <button
+            onClick={() => setDark(!dark)}
+            className="w-full border border-[var(--line)] px-5 py-4 text-[9px] uppercase tracking-[0.18em]"
+          >
+            {dark ? "Светлая версия" : "Тёмная версия"}
+          </button>
+        </div>
+      )}
+    </header>
   );
 }

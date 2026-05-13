@@ -2,8 +2,15 @@ import { content } from "@/data/content";
 
 export default function Benefits() {
   return (
-    <section className="section-soft py-12 md:py-16">
-      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+    <section className="section-soft relative overflow-hidden py-12 md:py-16">
+      <img
+        src="/images/benefits-bg.jpg"
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover grayscale opacity-[0.16]"
+      />
+      <div className="absolute inset-0 bg-[var(--bg-main)]/82" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="grid gap-px border border-[var(--line)] md:grid-cols-4">
           {content.benefits.map((item, i) => (
             <div key={i} className="p-6 md:p-7">

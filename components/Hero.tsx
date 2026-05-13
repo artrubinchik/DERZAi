@@ -44,7 +44,7 @@ export default function Hero({ onQuizOpen }: HeroProps) {
             как стиль жизни
           </h1>
 
-          {/* PREMIUM SUBTEXT */}
+          {/* SUBTEXT */}
           <div className="mt-12 max-w-2xl border-l border-[var(--line)] pl-8">
             <p className="text-lg font-light leading-relaxed text-[var(--text-muted)] md:text-xl">
               Архитектурный минимализм,

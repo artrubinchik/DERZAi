@@ -10,9 +10,9 @@ interface HeaderProps {
 
 function PremiumLogo() {
   return (
-    <div className="relative h-[62px] w-[62px] shrink-0">
+    <div className="relative h-[64px] w-[64px] shrink-0">
       {/* Верхняя форма */}
-      <div className="absolute left-0 top-0 h-[30px] w-[50px] rounded-r-full border border-current bg-current" />
+      <div className="absolute left-0 top-[4px] h-[30px] w-[50px] rounded-r-full border border-current bg-current" />
 
       {/* Нижний квадрат */}
       <div className="absolute bottom-0 left-0 h-[26px] w-[26px] border border-current bg-current" />

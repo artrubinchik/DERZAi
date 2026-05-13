@@ -10,20 +10,20 @@ interface HeaderProps {
 
 function PremiumLogo() {
   return (
-    <div className="relative h-[54px] w-[54px] shrink-0">
+    <div className="relative h-[58px] w-[58px] shrink-0">
       {/* Верхняя форма */}
-      <div className="absolute left-0 top-0 h-[26px] w-[42px] rounded-r-full border border-current" />
+      <div className="absolute left-0 top-0 h-[30px] w-[54px] rounded-r-full border border-current" />
 
-      {/* Нижний левый блок */}
-      <div className="absolute bottom-0 left-0 h-[23px] w-[19px] border border-current" />
+      {/* Нижний левый квадрат */}
+      <div className="absolute bottom-0 left-0 h-[25px] w-[26px] border border-current" />
 
-      {/* Нижний правый треугольник — отзеркален, только контур */}
+      {/* Нижний правый треугольник */}
       <div
         className="
-          absolute bottom-0 right-[3px]
-          h-[23px] w-[23px]
-          border-b border-r border-current
-          [clip-path:polygon(100%_0,100%_100%,0_100%)]
+          absolute bottom-0 right-0
+          h-[25px] w-[26px]
+          border border-current
+          [clip-path:polygon(0_0,100%_100%,0_100%)]
         "
       />
     </div>

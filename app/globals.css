@@ -3,21 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --bg-light: #f7f7f7;
   --bg-main: #f7f7f7;
-  --bg-soft: #f7f7f7;
-  --bg-card: rgba(0, 0, 0, 0.025);
+  --bg-soft: #eeeeeb;
+  --bg-dark: #0d0d0d;
+  --bg-card: rgba(0, 0, 0, 0.035);
 
-  --text-main: #111111;
-  --text-muted: rgba(17, 17, 17, 0.52);
+  --text-main: #0d0d0d;
+  --text-muted: rgba(13, 13, 13, 0.58);
 
-  --line: rgba(17, 17, 17, 0.12);
+  --line: rgba(13, 13, 13, 0.12);
 
-  --button-bg: transparent;
-  --button-text: #111111;
-  --button-border: rgba(17, 17, 17, 0.22);
+  --button-border: rgba(13, 13, 13, 0.24);
 
   --transition: 0.35s ease;
+}
+
+.dark-theme {
+  --bg-main: #0d0d0d;
+  --bg-soft: #151515;
+  --bg-dark: #0d0d0d;
+  --bg-card: rgba(255, 255, 255, 0.035);
+
+  --text-main: #f7f7f7;
+  --text-muted: rgba(247, 247, 247, 0.58);
+
+  --line: rgba(247, 247, 247, 0.12);
+
+  --button-border: rgba(247, 247, 247, 0.28);
 }
 
 html {
@@ -27,11 +39,12 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background: var(--bg-light);
+  background: var(--bg-main);
   color: var(--text-main);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background var(--transition), color var(--transition);
 }
 
 h1,
@@ -43,7 +56,7 @@ h6 {
   margin: 0;
   color: var(--text-main);
   font-weight: 300;
-  line-height: 0.96;
+  line-height: 0.95;
   letter-spacing: -0.055em;
 }
 
@@ -61,10 +74,10 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 18px;
   border: 1px solid var(--button-border);
   background: transparent;
-  color: var(--button-text);
+  color: var(--text-main);
+  padding: 10px 18px;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -88,15 +101,17 @@ a {
   transform: translateY(-2px);
 }
 
+.dark-theme .premium-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
 .section-dark,
 .section-soft {
   position: relative;
-  background: var(--bg-light);
+  background: var(--bg-main);
   color: var(--text-main);
 }
 
-.section-dark::after,
-.section-soft::after,
 section::after {
   content: "";
   position: absolute;
@@ -128,7 +143,18 @@ body::before {
   z-index: -1;
 }
 
+.dark-theme body::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+}
+
 ::selection {
   background: rgba(0,0,0,0.12);
   color: black;
+}
+
+.dark-theme ::selection {
+  background: rgba(255,255,255,0.16);
+  color: white;
 }

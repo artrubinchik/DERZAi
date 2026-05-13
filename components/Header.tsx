@@ -14,19 +14,19 @@ function PremiumLogo() {
       {/* Верхняя форма */}
       <div className="absolute left-0 top-[4px] h-[30px] w-[50px] rounded-r-full border border-current bg-current" />
 
-      {/* Нижний квадрат */}
+      {/* Квадрат */}
       <div className="absolute bottom-0 left-0 h-[26px] w-[26px] border border-current bg-current" />
 
       {/* Треугольник */}
       <svg
-        className="absolute bottom-0 left-[28px]"
+        className="absolute bottom-[1px] left-[28px]"
         width="26"
-        height="26"
-        viewBox="0 0 26 26"
+        height="25"
+        viewBox="0 0 26 25"
         fill="currentColor"
       >
         <path
-          d="M1 25V1L25 25H1Z"
+          d="M1 24V1L25 24H1Z"
           stroke="currentColor"
           strokeWidth="1"
         />

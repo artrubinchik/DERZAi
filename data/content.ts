@@ -97,7 +97,7 @@ export const content = {
       area: "160 м²",
       duration: "4 месяца",
       budget: "от 2.5 млн ₽",
-      style: "Современный минимализм",
+      style: " ",
       image: "/images/project-1.jpg",
     },
     {
@@ -106,7 +106,7 @@ export const content = {
       area: "65 м²",
       duration: "3 месяцев",
       budget: "от 4.2 млн ₽",
-      style: "Современный модернизм",
+      style: " ",
       image: "/images/project-2.jpg",
     },
     {
@@ -115,7 +115,7 @@ export const content = {
       area: "140 м²",
       duration: "3 месяца",
       budget: "от 6 млн ₽",
-      style: "Современная нео-классика",
+      style: " ",
       image: "/images/project-3.jpg",
     },
   ],

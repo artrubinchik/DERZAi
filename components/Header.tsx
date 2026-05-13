@@ -17,9 +17,9 @@ function PremiumLogo() {
       {/* Нижний квадрат */}
       <div className="absolute bottom-0 left-0 h-[26px] w-[26px] border border-current bg-current" />
 
-      {/* Нижний треугольник */}
+      {/* Треугольник */}
       <svg
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 left-[28px]"
         width="26"
         height="26"
         viewBox="0 0 26 26"

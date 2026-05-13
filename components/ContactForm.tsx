@@ -7,7 +7,6 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     setLoading(true);
 
     setTimeout(() => {
@@ -17,19 +16,18 @@ export default function ContactForm() {
   }
 
   return (
-    <section
-      id="contact"
-      className="section-dark py-14 md:py-18"
-    >
+    <section id="contact" className="section-soft py-16 md:py-22">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-2xl font-light tracking-[-0.05em] md:text-3xl">
-            Контакты
-          </h2>
+          <div>
+            <p className="mb-4 text-[10px] uppercase tracking-[0.32em] text-muted">
+              Contact
+            </p>
 
-          <span className="text-[9px] uppercase tracking-[0.24em] text-muted">
-            Contact
-          </span>
+            <h2 className="text-3xl font-light tracking-[-0.055em] md:text-4xl">
+              Обсудим проект
+            </h2>
+          </div>
         </div>
 
         <form
@@ -57,7 +55,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="border-t border-[var(--line)] text-[9px] uppercase tracking-[0.22em] transition hover:bg-white hover:text-black md:border-l md:border-t-0"
+            className="border-t border-[var(--line)] text-[9px] uppercase tracking-[0.22em] transition hover:bg-black hover:text-white md:border-l md:border-t-0"
           >
             {loading ? "Отправка..." : "Отправить"}
           </button>

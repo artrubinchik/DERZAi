@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-4 text-[14px] font-light text-[var(--text-muted)]">
-          дизайн, реализация
+          design is not what you do, it's a way of life
         </div>
 
         <div className="mt-10 text-[12px] uppercase tracking-[0.18em] text-[var(--text-muted)]">

@@ -6,7 +6,7 @@ interface PricingProps {
 
 export default function Pricing({ onQuizOpen }: PricingProps) {
   return (
-    <section id="pricing" className="section-dark py-14 md:py-18">
+    <section id="pricing" className="section-dark py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="mb-10 flex items-center justify-between">
           <h2 className="text-2xl font-light tracking-[-0.05em] md:text-3xl">
@@ -36,15 +36,17 @@ export default function Pricing({ onQuizOpen }: PricingProps) {
               <p className="mt-4 text-sm font-light leading-relaxed text-muted">
                 {item.desc}
               </p>
-
-              <button
-                onClick={onQuizOpen}
-                className="btn-minimal mt-6 w-full !text-[8px]"
-              >
-                Рассчитать
-              </button>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={onQuizOpen}
+            className="btn-minimal"
+          >
+            Рассчитать стоимость за 2 минуты
+          </button>
         </div>
       </div>
     </section>

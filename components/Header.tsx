@@ -10,36 +10,22 @@ interface HeaderProps {
 
 function PremiumLogo() {
   return (
-    <div className="flex flex-col items-center gap-3">
-      {/* LOGO */}
-      <div className="relative h-[64px] w-[64px]">
-        {/* top */}
-        <div className="absolute left-0 top-0 h-[30px] w-[48px] rounded-r-full border border-current" />
+    <div className="relative h-[54px] w-[54px] shrink-0">
+      {/* Верхняя форма */}
+      <div className="absolute left-0 top-0 h-[26px] w-[42px] rounded-r-full border border-current" />
 
-        {/* bottom left */}
-        <div className="absolute bottom-0 left-0 h-[26px] w-[20px] border border-current" />
+      {/* Нижний левый блок */}
+      <div className="absolute bottom-0 left-0 h-[23px] w-[19px] border border-current" />
 
-        {/* bottom right triangle */}
-        <div
-          className="absolute bottom-0 right-0 h-0 w-0 border-b-[26px] border-l-[22px] border-b-current border-l-transparent"
-        />
-
-        {/* triangle outline */}
-        <div
-          className="absolute bottom-0 right-[1px] h-0 w-0 border-b-[25px] border-l-[21px] border-b-transparent border-l-transparent outline-none"
-        />
-      </div>
-
-      {/* BRAND */}
-      <div className="text-center">
-        <div className="text-[16px] font-light uppercase tracking-[0.42em] leading-none">
-          RUBIK ART
-        </div>
-
-        <div className="mt-2 text-[7px] uppercase tracking-[0.24em] opacity-60">
-          Interior | Architecture | Realisation
-        </div>
-      </div>
+      {/* Нижний правый треугольник — отзеркален, только контур */}
+      <div
+        className="
+          absolute bottom-0 right-[3px]
+          h-[23px] w-[23px]
+          border-b border-r border-current
+          [clip-path:polygon(100%_0,100%_100%,0_100%)]
+        "
+      />
     </div>
   );
 }
@@ -74,14 +60,28 @@ export default function Header({ onQuizOpen }: HeaderProps) {
           : "border-b border-[var(--line)] bg-[var(--bg-main)] text-[var(--text-main)]"
       }`}
     >
-      <div className="mx-auto grid min-h-[120px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 py-5 md:px-12 lg:px-16">
-        {/* LEFT */}
-        <Link href="/" className="justify-self-start">
+      <div className="mx-auto grid h-[92px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 lg:px-16">
+        {/* LOGO + NAME */}
+        <Link href="/" className="flex items-center gap-5 justify-self-start">
           <PremiumLogo />
+
+          <div>
+            <div className="whitespace-nowrap text-[19px] font-light uppercase leading-none tracking-[0.46em]">
+              Rubik ART
+            </div>
+
+            <div
+              className={`mt-2 whitespace-nowrap text-[9px] uppercase tracking-[0.2em] ${
+                darkHeader ? "text-white/62" : "text-[var(--text-muted)]"
+              }`}
+            >
+              Дизайн, реализация
+            </div>
+          </div>
         </Link>
 
-        {/* CENTER NAV */}
-        <nav className="hidden items-center justify-center gap-9 lg:flex">
+        {/* NAV */}
+        <nav className="hidden items-center justify-center gap-8 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -101,10 +101,10 @@ export default function Header({ onQuizOpen }: HeaderProps) {
         <div className="hidden items-center justify-end gap-4 lg:flex">
           <a
             href={`tel:${content.company.phone}`}
-            className={`text-[10px] uppercase tracking-[0.18em] transition ${
+            className={`text-[14px] font-light tracking-[0.12em] transition ${
               darkHeader
-                ? "text-white/68 hover:text-white"
-                : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+                ? "text-white/78 hover:text-white"
+                : "text-[var(--text-main)] hover:opacity-70"
             }`}
           >
             {content.company.phoneDisplay}
@@ -126,6 +126,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="flex flex-col gap-1.5 p-2 justify-self-end lg:hidden"
+          aria-label="Меню"
         >
           <span className="h-px w-7 bg-current" />
           <span className="h-px w-7 bg-current" />
@@ -134,7 +135,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
 
       {menuOpen && (
         <div className="border-t border-[var(--line)] bg-[var(--bg-main)] px-6 py-7 text-[var(--text-main)] lg:hidden">
-          <nav className="flex flex-col gap-5">
+          <nav className="mb-7 flex flex-col gap-5">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -146,6 +147,13 @@ export default function Header({ onQuizOpen }: HeaderProps) {
               </a>
             ))}
           </nav>
+
+          <a
+            href={`tel:${content.company.phone}`}
+            className="block text-[18px] font-light tracking-[0.1em]"
+          >
+            {content.company.phoneDisplay}
+          </a>
         </div>
       )}
     </header>

@@ -26,30 +26,23 @@ function FooterLogo() {
     </div>
   );
 }
+
 export default function Footer() {
   return (
-    <footer className="bg-[var(--bg-main)] text-[var(--text-main)]">
-      <div className="mx-auto grid min-h-[260px] max-w-[1920px] grid-cols-3 items-center px-8 md:px-24">
-        <div className="text-[14px] leading-8 text-[var(--text-main)]">
-          <p>© 2024 Rubik ART</p>
-          <p>Все права защищены</p>
+    <footer className="bg-[var(--bg-main)] text-[var(--text-main)] border-t border-[var(--line)]">
+      <div className="mx-auto flex min-h-[240px] max-w-[1920px] flex-col items-center justify-center px-8 py-16 text-center md:px-24">
+        <FooterLogo />
+
+        <div className="mt-8 text-[26px] font-light uppercase tracking-[0.45em]">
+          Rubik ART
         </div>
 
-        <div className="flex flex-col items-center">
-          <FooterLogo />
-
-          <div className="mt-8 text-[26px] font-light uppercase tracking-[0.45em]">
-            Rubik ART
-          </div>
-
-          <div className="mt-4 text-[14px] font-light text-[var(--text-muted)]">
-            дизайн, реализация
-          </div>
+        <div className="mt-4 text-[14px] font-light text-[var(--text-muted)]">
+          дизайн, реализация
         </div>
 
-        <div className="justify-self-end text-[14px] leading-8">
-          <p>Политика конфиденциальности</p>
-          <p>Пользовательское соглашение</p>
+        <div className="mt-10 text-[12px] uppercase tracking-[0.18em] text-[var(--text-muted)]">
+          © 2013 Rubik ART
         </div>
       </div>
     </footer>

@@ -24,14 +24,11 @@ export default function Home() {
         <Hero onQuizOpen={() => setQuizOpen(true)} />
         <Projects />
         <Benefits />
-        <Founder />
-        {/* 
+        <Founder /> 
         <Quiz isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
-        
         <Pricing onQuizOpen={() => setQuizOpen(true)} />
         <Testimonials />
         <ContactForm /> 
-        */}
       </main>
       <Footer />
       <ChatWidget />

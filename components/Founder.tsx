@@ -12,7 +12,13 @@ export default function Founder() {
               <img
                 src={founder.image}
                 alt={founder.name}
-                className="h-full w-full object-cover grayscale-[30%] transition duration-700 hover:grayscale-0"
+                className="founder-light h-full w-full object-cover grayscale-[30%] transition duration-700 hover:grayscale-0"
+              />
+
+              <img
+                src="/images/founder02.jpg"
+                alt={founder.name}
+                className="founder-dark h-full w-full object-cover grayscale-[20%] transition duration-700 hover:grayscale-0"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

@@ -1,7 +1,7 @@
 "use client";
 
-import { content } from "@/data/content";
 import Image from "next/image";
+import { content } from "@/data/content";
 
 interface HeroProps {
   onQuizOpen?: () => void;
@@ -17,10 +17,25 @@ export default function Hero({ onQuizOpen }: HeroProps) {
           alt="Rubik ART интерьер"
           fill
           priority
-          className="object-cover grayscale opacity-[var(--hero-opacity)]"
+          className="object-cover grayscale-[35%] opacity-[0.52]"
         />
 
-        <div className="absolute inset-0 hero-overlay" />
+        {/* cinematic overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.72),rgba(0,0,0,0.38),rgba(0,0,0,0.62))]" />
+
+        {/* top fade */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/45 to-transparent" />
+
+        {/* bottom fade */}
+        <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[var(--bg-main)] to-transparent" />
+      </div>
+
+      {/* GRAPHIC LINES */}
+      <div className="absolute inset-0 opacity-[0.06]">
+        <div className="absolute left-0 top-0 h-px w-full bg-white" />
+        <div className="absolute bottom-0 left-0 h-px w-full bg-white" />
+        <div className="absolute left-1/3 top-0 h-full w-px bg-white" />
+        <div className="absolute right-1/3 top-0 h-full w-px bg-white" />
       </div>
 
       {/* CONTENT */}
@@ -28,7 +43,7 @@ export default function Hero({ onQuizOpen }: HeroProps) {
         <div className="max-w-5xl">
           {/* TOP LABEL */}
           <div className="mb-8 flex items-center gap-4">
-            <div className="h-px w-14 bg-[var(--text-main)]/40" />
+            <div className="h-px w-14 bg-[var(--text-main)]/38" />
 
             <span className="text-[10px] uppercase tracking-[0.42em] text-[var(--text-muted)]">
               {content.company.city}
@@ -36,22 +51,39 @@ export default function Hero({ onQuizOpen }: HeroProps) {
           </div>
 
           {/* TITLE */}
-          <h1 className="max-w-4xl text-4xl font-light leading-[0.92] tracking-[-0.065em] md:text-6xl lg:text-[84px]"
-            Пространства,
+          <h1 className="max-w-4xl text-4xl font-light leading-[0.9] tracking-[-0.07em] md:text-6xl lg:text-[84px]">
+            Архитектурный
             <br />
-            которые ощущаются
+            минимализм
             <br />
             как стиль жизни
           </h1>
 
           {/* SUBTEXT */}
           <div className="mt-12 max-w-2xl border-l border-[var(--line)] pl-8">
-            <p className="text-lg font-light leading-relaxed text-[var(--text-muted)] md:text-xl">
-              Архитектурный минимализм,
-              продуманные материалы
-              и реализация без компромиссов —
-              от концепции до готового интерьера.
+            <p className="text-base font-light leading-relaxed text-[var(--text-muted)] md:text-lg">
+              Интерьеры и пространства,
+              где сочетаются эстетика,
+              функциональность и реализация
+              без визуального шума и компромиссов.
             </p>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 flex flex-wrap gap-4">
+            <button
+              onClick={onQuizOpen}
+              className="btn-minimal"
+            >
+              Просчёт проекта
+            </button>
+
+            <a
+              href="#projects"
+              className="btn-minimal"
+            >
+              Смотреть проекты
+            </a>
           </div>
 
           {/* STATS */}
@@ -72,7 +104,7 @@ export default function Hero({ onQuizOpen }: HeroProps) {
               </p>
 
               <p className="mt-3 text-[10px] uppercase tracking-[0.24em] text-[var(--text-muted)]">
-                реализованных проектов
+                проектов
               </p>
             </div>
 
@@ -88,9 +120,6 @@ export default function Hero({ onQuizOpen }: HeroProps) {
           </div>
         </div>
       </div>
-
-      {/* BOTTOM FADE */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[var(--bg-main)] to-transparent" />
     </section>
   );
 }

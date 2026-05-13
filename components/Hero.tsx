@@ -36,7 +36,7 @@ export default function Hero({ onQuizOpen }: HeroProps) {
           </div>
 
           {/* TITLE */}
-          <h1 className="max-w-5xl text-5xl font-light leading-[0.9] tracking-[-0.07em] md:text-7xl lg:text-[112px]">
+          <h1 className="max-w-4xl text-4xl font-light leading-[0.92] tracking-[-0.065em] md:text-6xl lg:text-[84px]"
             Пространства,
             <br />
             которые ощущаются

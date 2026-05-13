@@ -7,6 +7,7 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     setLoading(true);
 
     setTimeout(() => {
@@ -18,59 +19,67 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="section-dark py-24 md:py-36"
+      className="section-soft relative overflow-hidden py-20 md:py-28"
     >
-      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <div className="grid gap-16 md:grid-cols-[0.9fr_1.1fr]">
+      <div className="absolute inset-0 opacity-[0.05]">
+        <div className="absolute left-0 top-0 h-px w-full bg-white" />
+        <div className="absolute left-1/2 top-0 h-full w-px bg-white" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+        <div className="grid gap-14 md:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <div className="mb-6 flex items-center gap-4">
-              <div className="h-px w-12 bg-[var(--text-main)]/50" />
-              <span className="text-xs uppercase tracking-[0.42em] text-muted">
+            <div className="mb-5 flex items-center gap-4">
+              <div className="h-px w-10 bg-[var(--text-main)]/40" />
+
+              <span className="text-[10px] uppercase tracking-[0.36em] text-muted">
                 Контакты
               </span>
             </div>
 
-            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.06em] md:text-7xl">
+            <h2 className="text-4xl font-light leading-[0.96] tracking-[-0.055em] md:text-6xl">
               Обсудим
               <br />
               ваш проект
             </h2>
 
-            <p className="mt-8 max-w-md text-sm font-light leading-relaxed text-muted">
-              Расскажите о задаче — мы подготовим предварительное видение,
-              сроки и ориентир по бюджету.
+            <p className="mt-8 max-w-sm text-sm font-light leading-relaxed text-muted">
+              Расскажите о задаче — подготовим концепцию, ориентир по бюджету
+              и дальнейший план реализации.
             </p>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="premium-card flex flex-col gap-6 p-10"
+            className="premium-card border border-[var(--line)] p-8 md:p-10"
           >
-            <input
-              type="text"
-              placeholder="Ваше имя"
-              className="border-b border-[var(--line)] bg-transparent pb-4 text-sm font-light outline-none placeholder:text-[var(--text-muted)]"
-            />
+            <div className="grid gap-8">
+              <input
+                type="text"
+                placeholder="Ваше имя"
+                className="border-b border-[var(--line)] bg-transparent pb-4 text-sm font-light outline-none placeholder:text-[var(--text-muted)]"
+              />
 
-            <input
-              type="tel"
-              placeholder="Телефон"
-              className="border-b border-[var(--line)] bg-transparent pb-4 text-sm font-light outline-none placeholder:text-[var(--text-muted)]"
-            />
+              <input
+                type="tel"
+                placeholder="Телефон"
+                className="border-b border-[var(--line)] bg-transparent pb-4 text-sm font-light outline-none placeholder:text-[var(--text-muted)]"
+              />
 
-            <textarea
-              placeholder="Кратко опишите проект"
-              rows={5}
-              className="border-b border-[var(--line)] bg-transparent pb-4 text-sm font-light outline-none placeholder:text-[var(--text-muted)]"
-            />
+              <textarea
+                placeholder="Кратко опишите проект"
+                rows={4}
+                className="border-b border-[var(--line)] bg-transparent pb-4 text-sm font-light outline-none placeholder:text-[var(--text-muted)]"
+              />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-minimal mt-4 w-full"
-            >
-              {loading ? "Отправка..." : "Отправить"}
-            </button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-minimal mt-4 w-full"
+              >
+                {loading ? "Отправка..." : "Отправить"}
+              </button>
+            </div>
           </form>
         </div>
       </div>

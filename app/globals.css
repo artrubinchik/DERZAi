@@ -12,12 +12,11 @@
 
 .dark-theme {
   --bg-main: #0d0d0d;
-  --bg-soft: #0d0d0d;
+  --bg-soft: #151515;
   --text-main: #f7f5ef;
-  --text-muted: rgba(247, 245, 239, 0.58);
-  --line: rgba(247, 245, 239, 0.22);
+  --text-muted: rgba(247, 245, 239, 0.62);
+  --line: rgba(247, 245, 239, 0.16);
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -45,4 +44,15 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+}
+.founder-dark {
+  display: none;
+}
+
+.dark-theme .founder-light {
+  display: none;
+}
+
+.dark-theme .founder-dark {
+  display: block;
 }

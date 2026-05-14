@@ -59,7 +59,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-soft py-20 md:py-28">
+    <section id="projects" className="section-soft py-10 md:py-10">
       <div className="mx-auto max-w-[1920px] px-6 md:px-12 lg:px-16">
         <div className="mb-12 flex items-center justify-between">
           <div>

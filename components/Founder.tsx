@@ -14,7 +14,7 @@ export default function Founder() {
           />
 
           <img
-            src="/images/founder02.jpg"
+            src="/images/founder.jpg"
             alt={founder.name}
             className="founder-dark h-full w-full object-cover grayscale-[20%] transition duration-700 hover:grayscale-0"
           />

@@ -27,8 +27,8 @@ export default function Home() {
         <Founder /> 
         <Quiz isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
         <Pricing onQuizOpen={() => setQuizOpen(true)} />
-       {/* <Testimonials />
-        <ContactForm /> */}
+       {/* <Testimonials /> */}
+        <ContactForm /> 
       </main>
       <Footer />
       <ChatWidget />

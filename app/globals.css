@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg-main: #ECE1D0;
-  --bg-soft: #ECE1D0;
+  --bg-main: #f7f5ef;
+  --bg-soft: #f7f5ef;
   --text-main: #1A1A1A;
   --text-muted: rgba(13, 13, 13, 0.58);
   --line: rgba(13, 13, 13, 0.22);

@@ -10,19 +10,19 @@ interface HeaderProps {
 
 function PremiumLogo() {
   return (
-    <div className="relative h-[64px] w-[64px] shrink-0">
-      <div className="absolute left-0 top-[4px] h-[30px] w-[50px] rounded-r-full border border-current bg-current" />
+    <div className="relative h-[50px] w-[52px] shrink-0">
+      <div className="absolute left-0 top-[4px] h-[24px] w-[41px] rounded-r-full bg-current" />
 
-      <div className="absolute bottom-0 left-0 h-[26px] w-[26px] border border-current bg-current" />
+      <div className="absolute bottom-0 left-0 h-[20px] w-[20px] bg-current" />
 
       <svg
-        className="absolute bottom-0 left-[26px]"
-        width="26"
-        height="26"
-        viewBox="0 0 26 26"
+        className="absolute bottom-0 left-[24px]"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
         fill="currentColor"
       >
-        <path d="M0 26V0L26 26H0Z" />
+        <path d="M0 20V0L20 20H0Z" />
       </svg>
     </div>
   );
@@ -30,18 +30,30 @@ function PremiumLogo() {
 
 export default function Header({ onQuizOpen }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [filled, setFilled] = useState(false);
 
   useEffect(() => {
+    let lastScroll = 0;
+
     const onScroll = () => {
+      const current = window.scrollY;
       const projects = document.getElementById("projects");
-      if (!projects) {
-        setFilled(window.scrollY > window.innerHeight * 0.75);
-        return;
+      const projectsTop = projects ? projects.offsetTop : window.innerHeight * 2;
+
+      setFilled(current >= projectsTop - 90);
+
+      if (current < 120) {
+        setVisible(true);
+      } else if (current >= projectsTop - 120) {
+        setVisible(true);
+      } else if (current > lastScroll && current > 220) {
+        setVisible(false);
+      } else {
+        setVisible(true);
       }
 
-      const projectsTop = projects.offsetTop;
-      setFilled(window.scrollY >= projectsTop - 90);
+      lastScroll = current;
     };
 
     window.addEventListener("scroll", onScroll);
@@ -55,16 +67,18 @@ export default function Header({ onQuizOpen }: HeaderProps) {
   return (
     <header
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-700 ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      } ${
         filled || menuOpen
           ? "border-b border-[var(--line)] bg-[var(--bg-main)] text-[var(--text-main)]"
           : "bg-transparent text-white"
       }`}
     >
-      <div className="mx-auto grid h-[76px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 lg:px-16">
+      <div className="mx-auto grid h-[72px] max-w-[1920px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-12 lg:px-16">
         <Link href="/" className="flex items-center gap-4 justify-self-start">
           <PremiumLogo />
 
-          <div className="whitespace-nowrap text-[18px] font-light uppercase leading-none tracking-[0.4em]">
+          <div className="whitespace-nowrap text-[17px] font-light uppercase leading-none tracking-[0.38em]">
             Rubik ART
           </div>
         </Link>
@@ -86,7 +100,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
             onClick={onQuizOpen}
             className="text-[11px] uppercase tracking-[0.22em] transition hover:font-bold hover:underline hover:underline-offset-8"
           >
-            Обсудить проект
+            Просчёт
           </button>
         </div>
 
@@ -122,7 +136,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
             }}
             className="text-[11px] uppercase tracking-[0.22em]"
           >
-            Обсудить проект
+            Просчёт
           </button>
         </div>
       )}

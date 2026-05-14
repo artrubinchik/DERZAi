@@ -1,21 +1,19 @@
-import { content } from "@/data/content";
-
 const steps = [
   {
     title: "Знакомство",
-    text: "Обсуждаем задачу, объект, бюджет, сроки и желаемый уровень реализации.",
+    text: "Обсуждаем объект, задачу, бюджет и ожидания.",
   },
   {
     title: "Концепция",
-    text: "Формируем направление: планировка, настроение, материалы и визуальная логика.",
+    text: "Определяем планировку, стиль, материалы и визуальный сценарий.",
   },
   {
     title: "Проект",
-    text: "Готовим дизайн-проект, чертежи, спецификации и решения для реализации.",
+    text: "Готовим чертежи, спецификации и решения для реализации.",
   },
   {
     title: "Реализация",
-    text: "Сопровождаем ремонт, комплектацию и финальную сборку пространства.",
+    text: "Сопровождаем ремонт, комплектацию и финальную сборку.",
   },
 ];
 
@@ -29,15 +27,10 @@ export default function Benefits() {
               Process
             </p>
 
-            <h2 className="text-3xl font-light tracking-[-0.055em] md:text-4xl">
+            <h2 className="text-2xl font-light tracking-[-0.045em] md:text-4xl">
               Этапы работ
             </h2>
           </div>
-
-          <p className="hidden max-w-sm text-sm font-light leading-relaxed text-muted md:block">
-            Процесс построен так, чтобы клиент понимал каждый шаг — от первой
-            идеи до готового пространства.
-          </p>
         </div>
 
         <div className="grid gap-px border border-[var(--line)] md:grid-cols-4">
@@ -54,30 +47,6 @@ export default function Benefits() {
               <p className="mt-4 text-sm font-light leading-relaxed text-muted">
                 {step.text}
               </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 grid gap-px border border-[var(--line)] md:grid-cols-2">
-          {content.testimonials.map((item, i) => (
-            <div key={i} className="p-6 md:p-7">
-              <p className="mb-6 text-[9px] uppercase tracking-[0.26em] text-muted">
-                Отзыв 0{i + 1}
-              </p>
-
-              <p className="text-lg font-light leading-relaxed tracking-[-0.03em]">
-                “{item.text}”
-              </p>
-
-              <div className="mt-7 border-t border-[var(--line)] pt-5">
-                <p className="text-[10px] uppercase tracking-[0.2em]">
-                  {item.name}
-                </p>
-
-                <p className="mt-2 text-[9px] uppercase tracking-[0.16em] text-muted">
-                  {item.project}
-                </p>
-              </div>
             </div>
           ))}
         </div>

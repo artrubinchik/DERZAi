@@ -23,34 +23,32 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {content.projects.map((project) => (
-            <article key={project.id} className="group relative overflow-hidden bg-black">
-              <div className="relative h-[520px] overflow-hidden">
+            <article key={project.id} className="group">
+              <div className="relative h-[500px] overflow-hidden bg-black">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="h-full w-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
                 />
+              </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/10 to-transparent" />
+              <div className="border border-[var(--line)] border-t-0 p-5">
+                <p className="mb-3 text-[10px] uppercase tracking-[0.28em] text-muted">
+                  {project.style}
+                </p>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-white">
-                    {project.style}
-                  </p>
+                <h3 className="text-xl font-light tracking-[-0.04em]">
+                  {project.title}
+                </h3>
 
-                  <h3 className="text-2xl font-light tracking-[-0.04em] text-white">
-                    {project.title}
-                  </h3>
-
-                  <div className="mt-5 flex flex-wrap gap-3 text-[10px] uppercase tracking-[0.2em] text-white">
-                    <span>{project.area}</span>
-                    <span>—</span>
-                    <span>{project.duration}</span>
-                    <span>—</span>
-                    <span>{project.budget}</span>
-                  </div>
+                <div className="mt-5 flex flex-wrap gap-3 text-[10px] uppercase tracking-[0.18em] text-muted">
+                  <span>{project.area}</span>
+                  <span>—</span>
+                  <span>{project.duration}</span>
+                  <span>—</span>
+                  <span>{project.budget}</span>
                 </div>
               </div>
             </article>

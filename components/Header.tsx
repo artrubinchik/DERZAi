@@ -10,18 +10,19 @@ interface HeaderProps {
 
 function PremiumLogo() {
   return (
-    <div className="relative h-[48px] w-[48px] shrink-0">
-      <div className="absolute left-0 top-[3px] h-[22px] w-[38px] rounded-r-full border border-current bg-current" />
-      <div className="absolute bottom-0 left-0 h-[20px] w-[20px] border border-current bg-current" />
+    <div className="relative h-[64px] w-[64px] shrink-0">
+      <div className="absolute left-0 top-[4px] h-[30px] w-[50px] rounded-r-full border border-current bg-current" />
+
+      <div className="absolute bottom-0 left-0 h-[26px] w-[26px] border border-current bg-current" />
 
       <svg
-        className="absolute bottom-[1px] left-[22px]"
-        width="20"
-        height="19"
-        viewBox="0 0 20 19"
+        className="absolute bottom-0 left-[26px]"
+        width="26"
+        height="26"
+        viewBox="0 0 26 26"
         fill="currentColor"
       >
-        <path d="M1 18V1L19 18H1Z" stroke="currentColor" strokeWidth="1" />
+        <path d="M0 26V0L26 26H0Z" />
       </svg>
     </div>
   );

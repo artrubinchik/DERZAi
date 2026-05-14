@@ -31,8 +31,8 @@ export default function Home() {
         <ContactForm />  */}
       </main>
       <Footer />
-      <ChatWidget />
-      <StickyBar onQuizOpen={() => setQuizOpen(true)} />
+      {/* <ChatWidget />
+      <StickyBar onQuizOpen={() => setQuizOpen(true)} /> */}
     </>
   );
 }

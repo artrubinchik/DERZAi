@@ -4,7 +4,7 @@ export default function Founder() {
   const { founder } = content;
 
   return (
-    <section className="section-soft py-16 md:py-24">
+    <section className="section-soft py-10 md:py-14">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-[380px_1fr_160px] md:items-stretch md:px-12 lg:px-16">
         <div className="relative h-[460px] overflow-hidden bg-[var(--bg-card)]">
           <img

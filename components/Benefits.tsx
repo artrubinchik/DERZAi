@@ -19,32 +19,32 @@ const steps = [
 
 export default function Benefits() {
   return (
-    <section className="bg-[#0d0d0d] py-10 text-white md:py-12">
+    <section className="bg-[#f7f5ef] py-10 text-black md:py-12">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="mb-8 flex items-end justify-between gap-8">
           <div>
-            <p className="mb-3 text-[10px] uppercase tracking-[0.32em] text-white/45">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.32em] text-black/45">
               Process
             </p>
 
-            <h2 className="text-2xl font-light tracking-[-0.045em] text-white md:text-3xl">
+            <h2 className="text-2xl font-light tracking-[-0.045em] text-black md:text-3xl">
               Этапы работ
             </h2>
           </div>
         </div>
 
-        <div className="grid gap-px border border-white/12 md:grid-cols-4">
+        <div className="grid gap-px border border-black/12 md:grid-cols-4">
           {steps.map((step, i) => (
             <div key={i} className="p-5 md:p-6">
-              <p className="mb-5 text-[9px] uppercase tracking-[0.26em] text-white/40">
+              <p className="mb-5 text-[9px] uppercase tracking-[0.26em] text-black/40">
                 0{i + 1}
               </p>
 
-              <h3 className="text-lg font-light tracking-[-0.04em] text-white">
+              <h3 className="text-lg font-light tracking-[-0.04em] text-black">
                 {step.title}
               </h3>
 
-              <p className="mt-4 text-sm font-light leading-relaxed text-white/55">
+              <p className="mt-4 text-sm font-light leading-relaxed text-black/55">
                 {step.text}
               </p>
             </div>

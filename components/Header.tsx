@@ -11,7 +11,7 @@ interface HeaderProps {
 function PremiumLogo() {
   return (
     <div className="relative h-[50px] w-[52px] shrink-0">
-      <div className="absolute left-0 top-[4px] h-[24px] w-[41px] rounded-r-full bg-current" />
+      <div className="absolute left-0 top-[1px] h-[24px] w-[41px] rounded-r-full bg-current" />
 
       <div className="absolute bottom-0 left-0 h-[20px] w-[20px] bg-current" />
 
@@ -100,7 +100,7 @@ export default function Header({ onQuizOpen }: HeaderProps) {
             onClick={onQuizOpen}
             className="text-[11px] uppercase tracking-[0.22em] transition hover:font-bold hover:underline hover:underline-offset-8"
           >
-            Просчёт
+            Просчёт 
           </button>
         </div>
 
